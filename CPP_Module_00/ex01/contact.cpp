@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 00:23:26 by libacchu          #+#    #+#             */
-/*   Updated: 2022/10/28 12:24:25 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/10/30 09:44:44 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 Contacts::Contacts(void) {
 	std::cout << "Constructor called\n";
+	this->phone_number = 0;
+	this->index = 0;
 	Contacts::_nbrInst++;
 	return ;
 }
@@ -35,28 +37,42 @@ void Contacts::set_index() {
 }
 
 void Contacts::set_first_name() {
+	std::cin.clear();
 	std::cout << "Enter first name: ";
 	std::cin >> this->first_name;
 }
 
 void Contacts::set_last_name() {
+	std::cin.clear();
 	std::cout << "Enter last name: ";
 	std::cin >> this->last_name;
 }
 
 void Contacts::set_nickname() {
+	std::cin.clear();
 	std::cout << "Enter nickname: ";
 	std::cin >> this->nickname;
 }
 
 void Contacts::set_phone_nbr() {
-	std::cout << "Enter phonenumber: ";
-	std::cin >> this->phone_number;
+	
+	std::cin.clear();
+	while (std::cout << "Enter phonenumber: " && !(std::cin >> this->phone_number)) {
+		std::cin.clear();
+		std::string line;
+        std::getline(std::cin, line);
+        std::cout << "I am sorry, but '" B_RED << line << DEFAULT "' is not a number\n";
+	
+		
+		
+	}
+	
 }
 
 void Contacts::set_darkest_secret() {
 	std::cout << "what is you darkest secret: ";
 	std::cin >> this->darkest_secret;
+	std::cin.clear();
 }
 
 int	Contacts::get_index() {

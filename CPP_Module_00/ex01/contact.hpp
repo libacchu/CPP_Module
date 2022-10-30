@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 00:23:52 by libacchu          #+#    #+#             */
-/*   Updated: 2022/10/28 11:57:03 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/10/30 09:19:38 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,5 @@ class	Contacts
 		std::string get_darkest_secret();
 		int			get_nbrInst();
 };
-
 
 #endif
