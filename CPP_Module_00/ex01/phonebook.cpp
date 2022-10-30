@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 00:23:26 by libacchu          #+#    #+#             */
-/*   Updated: 2022/10/28 12:18:33 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/10/30 05:55:35 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,20 @@ void	PhoneBook::print_contact_table() {
 	int j = 0;
 	while (j < 3)
 	{
-		std::cout << "Index: " <<contact[j].get_index() << std::endl;
-		std::cout << "First: " <<contact[j].get_first_name() << std::endl;
-		std::cout << "Last: " << contact[j].get_last_name() << std::endl;
-		std::cout << "Nick: " << contact[j].get_nickname() << std::endl;
-		std::cout << "Number: " << contact[j].get_phone_nbr() << std::endl;
-		std::cout << "Secret: " <<contact[j].get_darkest_secret() << std::endl;
+		std::cout << std::right;
+		std::cout << "|";
+		std::cout << std::setw(10) << contact[j].get_index();
+		std::cout << "|";
+		std::cout << std::setw(10) << contact[j].get_first_name().substr(0, 10);
+		std::cout << "|";
+		std::cout << std::setw(10) << contact[j].get_last_name();
+		std::cout << "|";
+		std::cout << std::setw(10) << contact[j].get_nickname();
+		std::cout << "|";
 		std::cout << std::endl;
 		j++;
 	}
+	for (int i = 0; i < 45; i++)
+		std::cout << "-";
+	std::cout << std::endl;
 }
