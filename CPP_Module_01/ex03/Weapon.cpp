@@ -6,13 +6,14 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 16:09:52 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/02 16:29:21 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/02 18:20:31 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon() {}
+Weapon::Weapon(std::string type): type{type} {}
+Weapon::Weapon(){}
 Weapon::~Weapon() {}
 
 std::string	Weapon::getType() const{
