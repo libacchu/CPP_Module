@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 00:23:52 by libacchu          #+#    #+#             */
-/*   Updated: 2022/10/28 12:17:21 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:55:24 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class	PhoneBook
 		Contacts	contact[3];
 	public:
 		void		print_contact_table();
+		void		display_contact();
 		int			add_contact_to_dir();
 		Contacts	add();
 		void		search();
