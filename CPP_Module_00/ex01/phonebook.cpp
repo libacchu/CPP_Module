@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 00:23:26 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/02 09:33:34 by libacchu         ###   ########.fr       */
+/*   Created: 2022/10/24 00:28:26 by libacchu          #+#    #+#             */
+/*   Updated: 2022/11/02 11:13:49 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 int	PhoneBook::add_contact_to_dir() {
 	int index;
 	
-	index = contact->get_nbrInst() % 3;
-	std::cout << index << std::endl;
+	index = contact->get_nbrInst() % 8;
 	contact[index] = PhoneBook::add();
 	return (0);
 }
@@ -33,8 +32,7 @@ Contacts	PhoneBook::add() {
 	return (cont);
 }
 
-
-void	PhoneBook::print_contact_table() {
+void	header() {
 	for (int i = 0; i < 45; i++)
 		std::cout << "-";
 	std::cout << std::endl;
@@ -52,28 +50,29 @@ void	PhoneBook::print_contact_table() {
 	for (int i = 0; i < 45; i++)
 		std::cout << "-";
 	std::cout << std::endl;
+}
+
+void	PhoneBook::print_contact_table() {
 	int j = 0;
-	while (j < 3)
+	
+	header();
+	while (j < 8)
 	{
 		std::cout << std::right;
 		std::cout << "|";
-		std::cout << std::setw(10) << contact[j].get_index();
-		std::cout << "|";
+		std::cout << std::setw(10) << contact[j].get_index() << "|";
 		if (contact[j].get_first_name().length() > 10)
-			std::cout << std::setw(10) << contact[j].get_first_name().substr(0, 9) << ".";
+			std::cout << std::setw(9) << contact[j].get_first_name().substr(0, 9) << '.' << "|";
 		else
-			std::cout << std::setw(10) << contact[j].get_first_name();
-		std::cout << "|";
+			std::cout << std::setw(10) << contact[j].get_first_name() << "|";
 		if (contact[j].get_last_name().length() > 10)
-			std::cout << std::setw(10) << contact[j].get_last_name().substr(0, 9) << ".";
+			std::cout << std::setw(9) << contact[j].get_last_name().substr(0, 9) << '.' << "|";
 		else
-			std::cout << std::setw(10) << contact[j].get_last_name();
-		std::cout << "|";
+			std::cout << std::setw(10) << contact[j].get_last_name() << "|";
 		if (contact[j].get_nickname().length() > 10)
-			std::cout << std::setw(10) << contact[j].get_nickname().substr(0, 9) << ".";
+			std::cout << std::setw(9) << contact[j].get_nickname().substr(0, 9) << '.' << "|";
 		else
-			std::cout << std::setw(10) << contact[j].get_nickname();
-		std::cout << "|";
+			std::cout << std::setw(10) << contact[j].get_nickname() << "|";
 		std::cout << std::endl;
 		j++;
 	}
@@ -94,18 +93,22 @@ void PhoneBook::display_contact() {
 			std::getline(std::cin, line);
 			std::cout << "'" B_RED << line << DEFAULT "' is not a number\n";
 		}
-		if ( index >= 1 && index <= 3){
+		if ( index >= 1 && index <= 8){
 			if (this->contact[index - 1].get_first_name() == "EMPTY") {
 				std::cout << B_RED  "Contact is empty\n" DEFAULT;
+				
 			}
 			else {
 				this->contact[index - 1].print_contacts();
 				break ;
 			}
 		}
+		else if (index == 999) {
+			break ;
+		}
 		else {
 			std::cout << B_RED  "Out of Range\n" DEFAULT;
 		}
+		std::cout << GREEN "Hint: Enter '999' to return." DEFAULT << std::endl;
 	}
-	
 }
