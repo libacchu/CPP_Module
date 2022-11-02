@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 00:23:26 by libacchu          #+#    #+#             */
-/*   Updated: 2022/10/30 05:55:35 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/02 09:19:58 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,20 @@ void	PhoneBook::print_contact_table() {
 		std::cout << "|";
 		std::cout << std::setw(10) << contact[j].get_index();
 		std::cout << "|";
-		std::cout << std::setw(10) << contact[j].get_first_name().substr(0, 10);
+		if (contact[j].get_first_name().length() > 10)
+			std::cout << std::setw(10) << contact[j].get_first_name().substr(0, 9) << ".";
+		else
+			std::cout << std::setw(10) << contact[j].get_first_name();
 		std::cout << "|";
-		std::cout << std::setw(10) << contact[j].get_last_name();
+		if (contact[j].get_last_name().length() > 10)
+			std::cout << std::setw(10) << contact[j].get_last_name().substr(0, 9) << ".";
+		else
+			std::cout << std::setw(10) << contact[j].get_last_name();
 		std::cout << "|";
-		std::cout << std::setw(10) << contact[j].get_nickname();
+		if (contact[j].get_nickname().length() > 10)
+			std::cout << std::setw(10) << contact[j].get_nickname().substr(0, 9) << ".";
+		else
+			std::cout << std::setw(10) << contact[j].get_nickname();
 		std::cout << "|";
 		std::cout << std::endl;
 		j++;
