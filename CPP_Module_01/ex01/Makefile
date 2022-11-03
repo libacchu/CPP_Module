@@ -6,7 +6,7 @@
 #    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 13:55:52 by libacchu          #+#    #+#              #
-#    Updated: 2022/11/02 15:16:25 by libacchu         ###   ########.fr        #
+#    Updated: 2022/11/03 15:26:40 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,9 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $(SRC)
 	
 clean:
 	$(RM) *.o;
