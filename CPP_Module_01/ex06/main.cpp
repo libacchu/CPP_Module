@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:22:46 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/07 18:48:21 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/08 09:53:56 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 		test.complain(argv[1]);
-	else
+	else {
 		std::cout << "Invalid input " << "try: ./harlFilter <LEVEL>" << std::endl;
+		std::cout << "LEVELS: " << "[ DEBUG ] [ INFO ] [ WARNING ] [ ERROR ]"<< std::endl;
+	}
 
 	return(0);	
 }
