@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 16:11:13 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/02 18:26:01 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/07 13:02:11 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class HumanA
 {
 	private:
-		Weapon&		HmanWeapon;
 		std::string	name;
+		Weapon&		HmanWeapon;
 	public:
 		HumanA(std::string	name, Weapon& Weapon);
 		~HumanA();

@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 16:11:19 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/02 18:32:57 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/07 13:03:52 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class HumanB
 {
 	private:
-		Weapon*		HmanWeapon;
 		std::string	name;
+		Weapon*		HmanWeapon;
 	public:
 		HumanB(std::string	name);
 		~HumanB();
