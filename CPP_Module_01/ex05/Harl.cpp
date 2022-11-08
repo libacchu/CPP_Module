@@ -6,13 +6,14 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:22:52 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/03 20:51:59 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:37:15 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
 Harl::Harl() {}
+
 Harl::~Harl() {}
 
 void Harl::debug( void ) {
@@ -36,5 +37,14 @@ void Harl::error( void ) {
 }
 
 void Harl::complain( std::string level ) {
-	
+
+	std::string levelCall[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	void(Harl::*func_ptr[4])(void) = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
+
+	for(int i = 0; i < 4; i++) {
+		if (level == levelCall[i]) {
+			(this->*func_ptr[i])();
+			break ;
+		}
+	} 
 }
