@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 00:23:52 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/02 11:09:24 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/04 09:55:10 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ class	Contacts
 		void		set_phone_nbr();
 		void		set_darkest_secret();
 		int			get_index();
-		std::string get_first_name();
-		std::string get_last_name();
-		std::string get_nickname();
-		std::string	get_phone_nbr();
-		std::string get_darkest_secret();
+		std::string get_first_name() const;
+		std::string get_last_name() const;
+		std::string get_nickname() const;
+		std::string	get_phone_nbr() const;
+		std::string get_darkest_secret() const;
 		int			get_nbrInst();
 		int			get_nbrOfContacts();
 		void		print_contacts();

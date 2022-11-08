@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 00:28:26 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/02 11:13:49 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/04 11:10:32 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,14 @@ void	PhoneBook::print_contact_table() {
 }
 
 void PhoneBook::display_contact() {
-	int	index = -1;
+	int			index = -1;
+	std::string	line;
 	
 	std::cin.clear();
-	while (1)
+	while ((std::cout << "Enter index: " && getline(std::cin, line)) \
+		|| !(std::cin.eof()))
 	{
-		while (std::cout << "Enter index: " && !(std::cin >> index)) {
-			std::cin.clear();
-			std::string line;
-			std::getline(std::cin, line);
-			std::cout << "'" B_RED << line << DEFAULT "' is not a number\n";
-		}
+		index = atoi(line.c_str());                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 		if ( index >= 1 && index <= 8){
 			if (this->contact[index - 1].get_first_name() == "EMPTY") {
 				std::cout << B_RED  "Contact is empty\n" DEFAULT;

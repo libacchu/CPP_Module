@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 00:23:26 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/02 11:10:20 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:40:04 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,55 +36,95 @@ void Contacts::set_index() {
 
 void Contacts::set_first_name() {
 	std::cin.clear();
-	while (std::cout << "Enter first name: " && !(std::cin >> this->first_name))
+	while ((std::cout << "Enter first name: " && \
+		!(getline(std::cin, this->first_name))) \
+		|| (this->first_name.length() == 0))
+	{
+		if (std::cin.eof()){
+			std::cout << std::endl;
+			break ;
+		}
 		std::cin.clear();
+	}
 }
 
 void Contacts::set_last_name() {
 	std::cin.clear();
-	while (std::cout << "Enter last name: " && !(std::cin >> this->last_name))
+	while ((std::cout << "Enter last name: " && \
+		!(getline(std::cin, this->last_name))) \
+		|| this->last_name.length() == 0)
+	{
+		if (std::cin.eof()) {
+			std::cout << std::endl;
+			break ;
+		}
 		std::cin.clear();
+	}
 }
 
 void Contacts::set_nickname() {
 	std::cin.clear();
-	while (std::cout << "Enter nickname: " && !(std::cin >> this->nickname))
+	while ((std::cout << "Enter nickname: " && \
+		!(getline(std::cin, this->nickname))) \
+		|| this->nickname.length() == 0)
+	{
+		if (std::cin.eof()){
+			std::cout << std::endl;
+			break ;
+		}
 		std::cin.clear();
+	}
 }
 
 void Contacts::set_phone_nbr() {
 	std::cin.clear();
-	while (std::cout << "Enter phonenumber: " && !(std::cin >> this->phone_number))
+	while ((std::cout << "Enter phonenumber: " && \
+		!(getline(std::cin, this->phone_number))) \
+		|| this->phone_number.length() == 0)
+	{
+		if (std::cin.eof()) {
+			std::cout << std::endl;
+			break ;
+		}
 		std::cin.clear();
+	}
 }
 
 void Contacts::set_darkest_secret() {
 	std::cin.clear();
-	while (std::cout << "what is you darkest secret: " && !(std::cin >> this->darkest_secret))
+	while ((std::cout << "what is you darkest secret: " && \
+		!(getline(std::cin, this->darkest_secret))) \
+		|| this->darkest_secret.length() == 0)
+	{
+		if (std::cin.eof()) {
+			std::cout << std::endl;
+			break ;
+		}
 		std::cin.clear();
+	}
 }
 
 int	Contacts::get_index() {
 	return (this->index);
 }
 
-std::string Contacts::get_first_name() {
+std::string Contacts::get_first_name() const {
 	return (this->first_name);
 }
 
-std::string Contacts::get_last_name() {
+std::string Contacts::get_last_name() const {
 	return (this->last_name);
 }
 
-std::string Contacts::get_nickname() {
+std::string Contacts::get_nickname() const {
 	return (this->nickname);
 }
 
-std::string	Contacts::get_phone_nbr() {
+std::string	Contacts::get_phone_nbr() const {
 	return (this->phone_number);
 }
 
-std::string Contacts::get_darkest_secret() {
+std::string Contacts::get_darkest_secret() const {
 	return (this->darkest_secret);
 }
 
@@ -95,8 +135,6 @@ int	Contacts::get_nbrInst() {
 int	Contacts::get_nbrOfContacts() {
 	return (Contacts::_nbrOfContacts);
 }
-
-
 
 void Contacts::print_contacts() {
 	std::cout << "First Name: " <<this->get_first_name() << std::endl;

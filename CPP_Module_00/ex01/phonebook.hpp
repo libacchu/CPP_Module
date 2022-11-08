@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 00:23:52 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/02 11:12:13 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/04 09:50:30 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include <iomanip>
+# include <stdlib.h>
 # include "contact.hpp"
 
 #define DEFAULT "\033[0;39m"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.de> +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 13:24:25 by libacchu          #+#    #+#             */
-/*   Updated: 2022/10/31 13:46:58 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:41:53 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ int	main(void) {
 	std::string		input;
 	
 	intro_message();
-	while(1) {
-		std::cout <<  B_BLUE "Please Enter: ";
-		std::cout <<  DEFAULT "ADD | SEARCH | EXIT" << std::endl;
-		std::cout <<  DEFAULT "Input: ";
-		std::cin >> input;
+	while((std::cout << B_BLUE "Please Enter: " << DEFAULT "ADD | SEARCH | EXIT" << \
+		std::endl << "Input: " && getline(std::cin, input)))
+	{
 		if (input == "ADD") {
 			book.add_contact_to_dir();
 		}
@@ -41,5 +39,10 @@ int	main(void) {
 		else
 			std::cout <<  B_RED << input << ": is an invalid input!" DEFAULT << std::endl;
 	}
+	if (std::cin.eof()) {
+		std::cout << std::endl;
+		return (1) ;
+	}
+	
 	return (0);
 }
