@@ -6,13 +6,13 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 14:01:14 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/02 15:45:20 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/07 12:51:27 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int	main(void){
+int	main(void) {
 	int		num;
 	Zombie	*virus;
 
