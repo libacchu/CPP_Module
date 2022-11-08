@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 16:09:34 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/02 18:20:33 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/08 13:15:32 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Weapon
 		Weapon();
 		Weapon(std::string type);
 		~Weapon();
-		std::string getType() const;
+		const std::string& getType() const;
 		void setType(std::string newType);
 };
 
