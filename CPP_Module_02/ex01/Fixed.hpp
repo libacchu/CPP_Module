@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:31:22 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/07 09:37:04 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/08 10:51:02 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Fixed
 {
 	private:
 		int					fpValue;
-		static const int	fractBits;
+		static const int	fractBits = 8;
 	public:
 		Fixed();
 		Fixed(const int value);
