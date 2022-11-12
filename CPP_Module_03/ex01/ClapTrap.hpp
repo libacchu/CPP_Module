@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:07:33 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/11 11:25:48 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/11 12:47:35 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 class ClapTrap
 {
-	private:
+	protected:
 		ClapTrap();
 		std::string		name;
 		unsigned int	hitPoints; //represent the health of the ClapTrap
@@ -33,25 +33,20 @@ class ClapTrap
 		unsigned int	maxEneryPoints;	
 
 	public:
-		ClapTrap(std::string init_name);
-		ClapTrap(const ClapTrap& copy);
-		ClapTrap& operator=(ClapTrap const & rhs);
+		ClapTrap( std::string init_name );
+		ClapTrap( const ClapTrap& copy );
+		ClapTrap& operator=( ClapTrap const & rhs );
 		~ClapTrap();
 		
-		void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
+		void attack( const std::string& target );
+		void takeDamage( unsigned int amount );
+		void beRepaired( unsigned int amount );
 
 		/* ---------- Getters ---------- */
 		const std::string&	getName( void ) const;
 		unsigned int		getHitPoints( void ) const;
 		unsigned int		getEnergyPoints( void ) const;
 		unsigned int		getAttackdamage( void ) const;
-
-		/* ---------- Setters ---------- */
-		// bool setHitPoints( unsigned int amount );
-		// bool setEnergyPoints( unsigned int amount );
-		// bool setAttackdamage( unsigned int amount );
 };
 
 std::ostream & operator<<( std::ostream & o, ClapTrap const & rhs);
