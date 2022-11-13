@@ -3,24 +3,25 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
+#    By: libacchu <libacchu@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 15:04:39 by libacchu          #+#    #+#              #
-#    Updated: 2022/11/12 10:54:42 by libacchu         ###   ########.fr        #
+#    Updated: 2022/11/12 16:58:47 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =		fragTrap
+NAME =		diamondTrap
 
 CC =		c++
-CFLAGS =	-Wall -Werror -Wextra  -std=c++98
+CFLAGS =	-Wall -Werror -Wextra  -std=c++98 -Wshadow -Wno-shadow
 
 RM = 		rm -rf
 
 SRC = 		main.cpp \
 			ClapTrap.cpp \
 			ScavTrap.cpp \
-			FragTrap.cpp
+			FragTrap.cpp \
+			DiamondTrap.cpp \
 
 OBJ = 		$(SRC:.cpp=.o)
 
