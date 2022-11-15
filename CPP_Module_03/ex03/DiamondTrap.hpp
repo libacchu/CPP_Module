@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:58:26 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/12 11:05:12 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/12 16:57:18 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,18 @@
 # include "ScavTrap.hpp"
 # include "FragTrap.hpp"
 
-class DiamondTap : public ScavTrap, public FragTrap
+class DiamondTrap : public ScavTrap, public FragTrap
 {
 	private:
-		DiamondTap();
+		DiamondTrap();
 		std::string	name;
 	public:
-		void whoAmI();
+		DiamondTrap( std::string init_name );
+		// DiamondTrap( const DiamondTrap & copy);
+		DiamondTrap& operator=( DiamondTrap const & rhs );
+		~DiamondTrap();
+		
+		void whoAmI() const;
 };
 
 #endif

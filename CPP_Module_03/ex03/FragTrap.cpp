@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:32:25 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/12 10:45:38 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/12 16:11:46 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ FragTrap::FragTrap( std::string init_name ): ClapTrap(init_name) {
 	this->attackDamage = 30;
 }
 
-FragTrap::FragTrap( const FragTrap& copy ): ClapTrap() {
+FragTrap::FragTrap( const FragTrap& copy ): ClapTrap(copy.name) {
 	std::cout << B_RED "FragTrap copy constructor called" DEFAULT << std::endl;
 	*this = copy;
 }
@@ -36,11 +36,11 @@ FragTrap& FragTrap::operator=( FragTrap const & rhs ) {
 }
 
 FragTrap::~FragTrap() {
-	std::cout << B_RED "FragTrap destructor called" DEFAULT << std::endl;
+	std::cout << B_RED << this << " destructor called" DEFAULT << std::endl;
 	return ;
 }
 
 void FragTrap::highFivesGuys(void) {
-	std::cout << B_RED "FragTrap gives high fives to everyone" DEFAULT << std::endl;
+	std::cout << B_RED << this << " gives high fives to everyone" DEFAULT << std::endl;
 	return ;
 }
