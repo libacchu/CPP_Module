@@ -6,7 +6,7 @@
 #    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:00:50 by libacchu          #+#    #+#              #
-#    Updated: 2022/11/15 10:07:22 by libacchu         ###   ########.fr        #
+#    Updated: 2022/11/15 11:12:25 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC = 		main.cpp \
 			Cat.cpp \
 			Dog.cpp \
 			WrongAnimal.cpp \
-			WrongCat.cpp
+			WrongCat.cpp \
+			Brain.cpp
 
 OBJ = 		$(SRC:.cpp=.o)
 
