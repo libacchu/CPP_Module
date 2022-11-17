@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:58:14 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/15 11:25:39 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/17 13:53:41 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ Dog& Dog::operator=( const Dog& rhs ) {
 }
 
 Dog::~Dog() {
-	delete dogBrain;
 	std::cout << B_GREEN "Dog destructor called." DEFAULT << std::endl;
+	delete dogBrain;
 }
 
 const std::string&	Dog::getType( void ) const {

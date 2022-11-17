@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:01:36 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/15 11:30:06 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/17 13:52:07 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int main()
 		const Animal* dog = new Dog();
 		const Animal* cat = new Cat();
 
-		
+		delete dog;
+		delete cat;		
 	}
 	return 0;
 }

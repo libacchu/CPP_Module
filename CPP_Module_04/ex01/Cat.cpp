@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 13:02:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/15 11:25:48 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/17 13:53:51 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ Cat& Cat::operator=( const Cat& rhs ) {
 }
 
 Cat::~Cat() {
-	delete catBrain;
 	std::cout << B_PINK "Cat destructor called." DEFAULT << std::endl;
+	delete catBrain;
 }
 
 const std::string&	Cat::getType( void ) const {
