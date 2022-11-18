@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:35:15 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/17 16:28:13 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/17 19:44:06 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ class Bureaucrat
 		void			setGrade( int grade );
 };
 
-
+std::ostream & operator<<( std::ostream & o, Bureaucrat const & rhs);
 #endif

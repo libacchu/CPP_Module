@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:35:53 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/17 16:26:55 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/17 19:43:40 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,19 @@ void	Bureaucrat::setName( std::string name ) {
 }
 
 void	Bureaucrat::setGrade( int grade ) {
-	this->grade = grade;
+	try {
+		if (grade > 150)
+			throw ("too low");
+		if (grade < 1)
+			throw ("too high");
+		this->grade = grade;
+	}
+	catch {
+		
+	}
+};
+
+std::ostream & operator<<( std::ostream & o, Bureaucrat const & rhs) {
+	o << rhs.getName << ", bureaucrat grade " << rhs.getGrade;
+	return (o);
 }
