@@ -3,17 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:32:25 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/12 16:11:46 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:57:41 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
+FragTrap::FragTrap(): ClapTrap("_noName_") {
+	std::cout << B_RED "FragTrap " << this->name << " default constructor called" DEFAULT << std::endl;
+	this->hitPoints = 100;
+	this->energyPoints = 100;
+	this->maxEneryPoints = 50;
+	this->attackDamage = 30;
+}
+
 FragTrap::FragTrap( std::string init_name ): ClapTrap(init_name) {
-	std::cout << B_RED "FragTrap default constructor called" DEFAULT << std::endl;
+	std::cout << B_RED "FragTrap " << this->name << " default constructor called" DEFAULT << std::endl;
 	this->name = init_name;
 	this->hitPoints = 100;
 	this->energyPoints = 100;
@@ -36,11 +44,11 @@ FragTrap& FragTrap::operator=( FragTrap const & rhs ) {
 }
 
 FragTrap::~FragTrap() {
-	std::cout << B_RED << this << " destructor called" DEFAULT << std::endl;
+	std::cout << B_RED "FragTrap " << this->name << " destructor called" DEFAULT << std::endl;
 	return ;
 }
 
 void FragTrap::highFivesGuys(void) {
-	std::cout << B_RED << this << " gives high fives to everyone" DEFAULT << std::endl;
+	std::cout << B_RED "FragTrap " << this->name << " gives high fives to everyone" DEFAULT << std::endl;
 	return ;
 }

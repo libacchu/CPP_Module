@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 09:35:55 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/11 11:18:37 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/23 11:50:27 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int main( void )
 {
+	std::cout << std::endl;
 	ClapTrap C1("C1");
 
 	std::cout << std::endl;

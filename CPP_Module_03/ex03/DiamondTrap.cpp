@@ -3,30 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: libacchu <libacchu@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:58:22 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/12 16:55:11 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/29 19:40:43 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string init_name): name(init_name) {
+DiamondTrap::DiamondTrap() { }
+
+DiamondTrap::DiamondTrap(std::string init_name) {
     ClapTrap::name = init_name + "_clap_name";
-    this->hitPoints = FragTrap::hitPoints;
+	this->name = init_name;
+	this->hitPoints = FragTrap::hitPoints;
     this->energyPoints = ScavTrap::energyPoints;
     this->maxEneryPoints = ScavTrap::maxEneryPoints;
     this->attackDamage = FragTrap::attackDamage;
+	std::cout << B_GREEN "DiamondTrap " << this->name << " constructor called" DEFAULT << std::endl;
 }
 
-// DiamondTrap::DiamondTrap( const DiamondTrap& copy ): ClapTrap(copy.name) {
-// 	std::cout << B_GREEN "DiamondTrap copy constructor called" DEFAULT << std::endl;
-// 	*this = copy;
-// }
+DiamondTrap::DiamondTrap( const DiamondTrap& copy ): ClapTrap(), ScavTrap(), FragTrap() {
+	std::cout << B_GREEN "DiamondTrap copy constructor called" DEFAULT << std::endl;
+	*this = copy;
+}
 
 DiamondTrap& DiamondTrap::operator=( DiamondTrap const & rhs ) {
 	std::cout << B_GREEN "DiamondTrap copy assignment operator called" DEFAULT << std::endl;
+	this->ClapTrap::name = rhs.ClapTrap::name;
 	this->name = rhs.name;
 	this->hitPoints = rhs.hitPoints;
 	this->energyPoints = rhs.energyPoints;
@@ -35,7 +40,7 @@ DiamondTrap& DiamondTrap::operator=( DiamondTrap const & rhs ) {
 }
 
 DiamondTrap::~DiamondTrap() {
-	std::cout << B_GREEN << this << " destructor called" DEFAULT << std::endl;
+	std::cout << B_GREEN "DiamondTrap " << this->name << " destructor called" DEFAULT << std::endl;
 	return ;
 }
 

@@ -5,23 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/09 15:04:39 by libacchu          #+#    #+#              #
-#    Updated: 2022/11/29 17:31:17 by libacchu         ###   ########.fr        #
+#    Created: 2022/11/17 14:33:08 by libacchu          #+#    #+#              #
+#    Updated: 2022/11/17 14:34:12 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =		diamondTrap
+NAME =		bureaucrat
 
 CC =		c++
-CFLAGS =	-Wall -Werror -Wextra  -std=c++98 -Wshadow
+CFLAGS =	-Wall -Werror -Wextra  -std=c++98
 
 RM = 		rm -rf
 
 SRC = 		main.cpp \
-			ClapTrap.cpp \
-			ScavTrap.cpp \
-			FragTrap.cpp \
-			DiamondTrap.cpp \
+			Bureaucrat.cpp
 
 OBJ = 		$(SRC:.cpp=.o)
 

@@ -6,26 +6,28 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:19:17 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/11 11:27:06 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:48:26 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(): hitPoints(10), energyPoints(10), attackDamage(0), maxEneryPoints(10) {}
+ClapTrap::ClapTrap(): name("_noname_"), hitPoints(10), energyPoints(10), attackDamage(0), maxEneryPoints(10) {
+	std::cout << "ClapTrap " << this->name << " default constructor called" << std::endl;
+}
 
 ClapTrap::ClapTrap(std::string init_name)
 : name(init_name), hitPoints(10), energyPoints(10), attackDamage(0), maxEneryPoints(10) {
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "ClapTrap " << this->name << " default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& copy) {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 	*this = copy;
 }
 
 ClapTrap& ClapTrap::operator=(ClapTrap const & rhs) {
-	std::cout << "Copy assignment operator called"<< std::endl;
+	std::cout << "ClapTrap copy assignment operator called" << std::endl;
 	this->name = rhs.name;
 	this->hitPoints = rhs.hitPoints;
 	this->energyPoints = rhs.energyPoints;
@@ -34,7 +36,7 @@ ClapTrap& ClapTrap::operator=(ClapTrap const & rhs) {
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "Deconstructor called" << std::endl;
+	std::cout << "ClapTrap " << this->name << " destructor called" << std::endl;
 	return ;
 }
 
@@ -89,4 +91,3 @@ std::ostream & operator<<( std::ostream & o,ClapTrap const & rhs) {
 	o << rhs.getName();
 	return (o);
 }
-
