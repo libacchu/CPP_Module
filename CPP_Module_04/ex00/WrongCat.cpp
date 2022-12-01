@@ -6,18 +6,15 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 17:41:04 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/15 10:08:16 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/30 11:21:02 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat() {
+WrongCat::WrongCat( void ) {
 	std::cout << B_RED "WrongCat default constructor called." DEFAULT << std::endl;
-}
-
-WrongCat::WrongCat( std::string	init_type ) : type( init_type ) {
-	std::cout << B_RED "WrongCat default parameter constructor called." DEFAULT << std::endl;
+	this->type = "WrongCat";
 }
 
 WrongCat::WrongCat( const WrongCat & copy ) : WrongAnimal() {
@@ -31,7 +28,7 @@ WrongCat& WrongCat::operator=( const WrongCat& rhs ) {
 	return (*this);
 }
 
-WrongCat::~WrongCat() {
+WrongCat::~WrongCat( void ) {
 	std::cout << B_RED "WrongCat destructor called." DEFAULT << std::endl;
 }
 

@@ -6,18 +6,14 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:11:07 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/15 10:01:19 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/30 10:32:00 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal() {
+Animal::Animal( void ): type( "Animal" ) {
 	std::cout << B_YELLOW "Animal default constructor called." DEFAULT << std::endl;
-}
-
-Animal::Animal( std::string	init_type ) : type( init_type ) {
-	std::cout << B_YELLOW "Animal default parameter constructor called." DEFAULT << std::endl;
 }
 
 Animal::Animal( const Animal & copy ) {

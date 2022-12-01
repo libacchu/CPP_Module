@@ -6,25 +6,20 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 13:02:20 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/14 14:53:21 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/30 10:46:07 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "Cat.hpp"
 
-Cat::Cat() {
+Cat::Cat( void ) {
 	std::cout << B_PINK "Cat default constructor called." DEFAULT << std::endl;
-}
-
-Cat::Cat( std::string	init_type ) : type( init_type ) {
-	std::cout << B_PINK "Cat default parameter constructor called." DEFAULT << std::endl;
+	this->type = "Cat";
 }
 
 Cat::Cat( const Cat & copy ) : Animal() {
 	std::cout << B_PINK "Cat copy constructor called." DEFAULT << std::endl;
 	*this = copy;
-	return ;
 }
 
 Cat& Cat::operator=( const Cat& rhs ) {
@@ -33,7 +28,7 @@ Cat& Cat::operator=( const Cat& rhs ) {
 	return (*this);
 }
 
-Cat::~Cat() {
+Cat::~Cat( void ) {
 	std::cout << B_PINK "Cat destructor called." DEFAULT << std::endl;
 }
 

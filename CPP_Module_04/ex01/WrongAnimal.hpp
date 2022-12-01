@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 17:36:05 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/14 17:39:39 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/30 11:23:34 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,14 @@ class WrongAnimal
 	protected:
 		std::string	type;
 	public:
-		WrongAnimal();
-		WrongAnimal( std::string	init_type );
+		WrongAnimal( void );
 		WrongAnimal( const WrongAnimal& copy );
 		WrongAnimal& operator=( const WrongAnimal& rhs);
-		virtual ~WrongAnimal();
+		~WrongAnimal( void );
 
 		const std::string&	getType( void ) const;
 		
-		virtual void	makeSound( void ) const;
+		void	makeSound( void ) const;
 };
 
 #endif

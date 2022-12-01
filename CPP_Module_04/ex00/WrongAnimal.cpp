@@ -6,18 +6,15 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 09:59:13 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/15 10:00:26 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/30 11:25:49 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal() {
+WrongAnimal::WrongAnimal( void ) {
 	std::cout << B_BLUE "WrongAnimal default constructor called." DEFAULT << std::endl;
-}
-
-WrongAnimal::WrongAnimal( std::string	init_type ) : type( init_type ) {
-	std::cout << B_BLUE "WrongAnimal default parameter constructor called." DEFAULT << std::endl;
+	this->type = "WrongAnimal";
 }
 
 WrongAnimal::WrongAnimal( const WrongAnimal & copy ) {
@@ -31,7 +28,7 @@ WrongAnimal& WrongAnimal::operator=( const WrongAnimal& rhs ) {
 	return (*this);
 }
 
-WrongAnimal::~WrongAnimal() {
+WrongAnimal::~WrongAnimal( void ) {
 	std::cout << B_BLUE "WrongAnimal destructor called." DEFAULT << std::endl;
 }
 

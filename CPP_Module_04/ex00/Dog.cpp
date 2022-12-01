@@ -6,22 +6,18 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:58:14 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/14 14:54:12 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/30 10:44:39 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() {
+Dog::Dog( void ) {
 	std::cout << B_GREEN "Dog default constructor called." DEFAULT << std::endl;
+	this->type = "Dog";
 }
 
-Dog::Dog( std::string	init_type ) : type( init_type ) {
-	std::cout << B_GREEN "Dog default parameter constructor called." DEFAULT << std::endl;
-}
-
-//TODO: why the animal constructor
-Dog::Dog( const Dog & copy ) : Animal() {
+Dog::Dog( const Dog & copy ): Animal() {
 	std::cout << B_GREEN "Dog copy constructor called." DEFAULT << std::endl;
 	*this = copy;
 }
@@ -32,7 +28,7 @@ Dog& Dog::operator=( const Dog& rhs ) {
 	return (*this);
 }
 
-Dog::~Dog() {
+Dog::~Dog( void ) {
 	std::cout << B_GREEN "Dog destructor called." DEFAULT << std::endl;
 }
 

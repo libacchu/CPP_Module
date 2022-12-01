@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:26:25 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/15 11:22:25 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/30 13:53:56 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,14 @@
 class Dog : public Animal
 {
 	private:
-		std::string	type;
-		Brain* dogBrain;
+		Brain*	dogBrain;
 	public:
-		Dog();
-		Dog( std::string	init_type );
+		Dog( void );
 		Dog( const Dog& copy );
 		Dog& operator=( const Dog& rhs);
-		~Dog();
+		~Dog( void );
 
-		const std::string&	getType() const;
+		const std::string&	getType( void ) const;
 		
 		void	makeSound( void ) const;
 };

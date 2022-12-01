@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:24:57 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/15 11:03:58 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:12:59 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ class Brain
 	private:
 		std::string ideas[100];
 	public:
-		Brain();
+		Brain( void );
 		Brain(const Brain& copy);
 		Brain& operator=(const Brain& rhs);
-		~Brain();
+		~Brain( void );
 
-		const std::string&	getIdeas() const;
+		const std::string*		getIdeas( void ) const;
+		void					setIdeas( std::string idea, int index);
 };
 
 #endif

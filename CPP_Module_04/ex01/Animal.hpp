@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:02:27 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/14 17:38:42 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/30 10:48:49 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ class Animal
 	protected:
 		std::string	type;
 	public:
-		Animal();
-		Animal( std::string	init_type );
+		Animal( void );
 		Animal( const Animal& copy );
 		Animal& operator=( const Animal& rhs);
-		virtual ~Animal();
+		virtual ~Animal( void );
 
 		const std::string&	getType( void ) const;
 		
