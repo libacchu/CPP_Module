@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 17:36:05 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/30 11:23:34 by libacchu         ###   ########.fr       */
+/*   Created: 2022/11/14 11:02:27 by libacchu          #+#    #+#             */
+/*   Updated: 2022/12/06 16:29:19 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-# define WRONGANIMAL_HPP
+#ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
 #define DEFAULT "\033[0;39m"
 #define B_RED "\033[1;31m"
@@ -22,20 +22,19 @@
 
 #include <iostream>
 
-class WrongAnimal
+class Animal
 {
 	protected:
 		std::string	type;
 	public:
-		WrongAnimal( void );
-		WrongAnimal( const WrongAnimal& copy );
-		WrongAnimal& operator=( const WrongAnimal& rhs);
-		~WrongAnimal( void );
+		Animal( void );
+		Animal( const Animal& copy );
+		Animal& operator=( const Animal& rhs);
+		virtual ~Animal( void );
 
 		const std::string&	getType( void ) const;
 		
-		void	makeSound( void ) const;
+		virtual void	makeSound( void ) const;
 };
 
 #endif
-

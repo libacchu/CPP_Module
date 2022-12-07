@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 17:43:13 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/14 20:46:49 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/30 11:19:57 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@
 class WrongCat : public WrongAnimal
 {
 	private:
-		std::string	type;
+
 	public:
-		WrongCat();
-		WrongCat( std::string	init_type );
+		WrongCat( void );
 		WrongCat( const WrongCat& copy );
 		WrongCat& operator=( const WrongCat& rhs);
-		~WrongCat();
+		~WrongCat( void );
 
 		const std::string&	getType() const;
 		

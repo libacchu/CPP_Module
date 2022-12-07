@@ -6,11 +6,11 @@
 #    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 11:00:50 by libacchu          #+#    #+#              #
-#    Updated: 2022/11/15 11:12:25 by libacchu         ###   ########.fr        #
+#    Updated: 2022/12/07 10:20:23 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =		animal
+NAME =		a_animal
 
 CC =		c++
 CFLAGS =	-Wall -Werror -Wextra  -std=c++98
@@ -19,6 +19,7 @@ RM = 		rm -rf
 
 SRC = 		main.cpp \
 			Animal.cpp \
+			A_Animal.cpp \
 			Cat.cpp \
 			Dog.cpp \
 			WrongAnimal.cpp \

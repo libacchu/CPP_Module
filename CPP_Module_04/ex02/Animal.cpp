@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   A_Animal.cpp                                       :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:11:07 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/07 10:16:24 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/11/30 10:32:00 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "A_Animal.hpp"
+#include "Animal.hpp"
 
-A_Animal::A_Animal( void ): type( "A_Animal" ) {
-	std::cout << B_YELLOW "A_Animal default constructor called." DEFAULT << std::endl;
+Animal::Animal( void ): type( "Animal" ) {
+	std::cout << B_YELLOW "Animal default constructor called." DEFAULT << std::endl;
 }
 
-A_Animal::A_Animal( const A_Animal & copy ) {
-	std::cout << B_YELLOW "A_Animal copy constructor called." DEFAULT << std::endl;
+Animal::Animal( const Animal & copy ) {
+	std::cout << B_YELLOW "Animal copy constructor called." DEFAULT << std::endl;
 	*this = copy;
 }
 
-A_Animal& A_Animal::operator=( const A_Animal& rhs ) {
-	std::cout << B_YELLOW "A_Animal copy operator called." DEFAULT << std::endl;
+Animal& Animal::operator=( const Animal& rhs ) {
+	std::cout << B_YELLOW "Animal copy operator called." DEFAULT << std::endl;
 	this->type = rhs.type;
 	return (*this);
 }
 
-A_Animal::~A_Animal() {
-	std::cout << B_YELLOW "A_Animal destructor called." DEFAULT << std::endl;
+Animal::~Animal() {
+	std::cout << B_YELLOW "Animal destructor called." DEFAULT << std::endl;
 }
 
-const std::string&	A_Animal::getType( void ) const {
+const std::string&	Animal::getType( void ) const {
 	return (this->type);
 }
 
+void	Animal::makeSound( void ) const {
+	std::cout << B_YELLOW "Animal make a sound." DEFAULT << std::endl;
+}

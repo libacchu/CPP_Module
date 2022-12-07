@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:01:36 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/17 14:02:48 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:18:18 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,93 @@ int main()
 		std::cout << std::endl;
 		std::cout << B_BLUE "----- [TEST 1] -----" DEFAULT<< std::endl;
 		
-		const A_Animal* j = new Dog();
-		const A_Animal* i = new Cat();
-		
-		delete j;//should not create a leak
-		delete i;
-	}
-	{
-		std::cout << std::endl;
-		std::cout << B_YELLOW "----- [TEST 2] -----" DEFAULT<< std::endl;
-		
 		const A_Animal* dog = new Dog();
 		const A_Animal* cat = new Cat();
 
+		std::cout << std::endl;
+
 		delete dog;
 		delete cat;		
+	}
+	{
+		std::cout << std::endl;
+		std::cout << B_BLUE "----- [TEST 2] -----" DEFAULT<< std::endl;
+		
+		unsigned int nbrOfA_Animals = 6;
+		A_Animal* animals[nbrOfA_Animals];
+		
+		for (unsigned int i = 0; i < nbrOfA_Animals; i++) {
+			
+			std::cout << "---- A_Animal " << i + 1 << " ----" << std::endl;
+			if (i % 2)
+				animals[i] = new Cat();
+			else
+				animals[i] = new Dog();
+			std::cout << std::endl;
+		}
+		
+		for (unsigned int i = 0; i < nbrOfA_Animals; i++) {
+			
+			std::cout << "---- A_Animal " << i + 1 << " ----" << std::endl;
+			delete animals[i];
+			std::cout << std::endl;
+		}
+	}
+	{
+		std::cout << std::endl;
+		std::cout << B_BLUE "----- [TEST 3] -----" DEFAULT<< std::endl;
+
+		Cat*	cat1 = new Cat();
+		Cat*	cat2 = new Cat();
+		
+		std::cout << std::endl;
+		std::cout << "cat1 = " << cat1->getType() << std::endl;
+		std::cout << "cat2 = " << cat2->getType() << std::endl;
+
+		std::cout << std::endl;
+		cat1->setType("TomCat");
+		*cat2 = *cat1;				//Deep copy operator
+		Cat		cat3 = *(cat1);		//Deep copy constructor
+		cat2->setType("Kitten");
+		cat3.setType("BobCat");
+		
+		std::cout << std::endl;
+		std::cout << "cat1 = " << cat1->getType() << std::endl;
+		std::cout << "cat2 = " << cat2->getType() << std::endl;
+		std::cout << "cat3 = " << cat3.getType() << std::endl;
+		
+		std::cout << std::endl;
+		delete cat1;
+		delete cat2;
+	}
+	{
+		std::cout << std::endl;
+		std::cout << B_BLUE "----- [TEST 4] -----" DEFAULT<< std::endl;
+		
+		Cat*			cat1 = new Cat();
+		Cat*			cat2 = new Cat();
+		Brain*			brain1;
+		Brain*			brain2;
+
+		std::cout << std::endl;
+		brain1 = cat1->getBrain();
+		brain2 = cat2->getBrain();
+		for (int i = 0; i < 100; i++)
+			brain1->setIdeas("is this my brain?", i);
+			
+		*cat2 = *cat1; //deep copy
+		std::cout << std::endl;
+		std::cout << brain1->getIdeas()[2] << std::endl;
+		std::cout << brain2->getIdeas()[2] << std::endl;
+		
+		std::cout << std::endl;
+		brain2->setIdeas("testing my brain, is my brain working?", 11);
+		std::cout << brain1->getIdeas()[11] << std::endl;
+		std::cout << brain2->getIdeas()[11] << std::endl;
+		
+		std::cout << std::endl;
+		delete cat1;
+		delete cat2;
 	}
 	return 0;
 }
