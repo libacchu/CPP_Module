@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:01:36 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/30 15:33:28 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/12/06 16:40:18 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,25 +56,57 @@ int main()
 		std::cout << std::endl;
 		std::cout << B_BLUE "----- [TEST 3] -----" DEFAULT<< std::endl;
 
-		Cat* cat1 = new Cat();
-		Cat *cat2 = new Cat();
+		Cat*	cat1 = new Cat();
+		Cat*	cat2 = new Cat();
 		
-		Brain* brain1 = new Brain();
-		cat1 = cat2;
+		std::cout << std::endl;
+		std::cout << "cat1 = " << cat1->getType() << std::endl;
+		std::cout << "cat2 = " << cat2->getType() << std::endl;
+
+		std::cout << std::endl;
+		cat1->setType("TomCat");
+		*cat2 = *cat1;				//Deep copy operator
+		Cat		cat3 = *(cat1);		//Deep copy constructor
+		cat2->setType("Kitten");
+		cat3.setType("BobCat");
+		
+		std::cout << std::endl;
+		std::cout << "cat1 = " << cat1->getType() << std::endl;
+		std::cout << "cat2 = " << cat2->getType() << std::endl;
+		std::cout << "cat3 = " << cat3.getType() << std::endl;
+		
+		std::cout << std::endl;
+		delete cat1;
+		delete cat2;
+	}
+	{
+		std::cout << std::endl;
+		std::cout << B_BLUE "----- [TEST 4] -----" DEFAULT<< std::endl;
+		
+		Cat*			cat1 = new Cat();
+		Cat*			cat2 = new Cat();
+		Brain*			brain1;
+		Brain*			brain2;
+
+		std::cout << std::endl;
 		brain1 = cat1->getBrain();
-		
-		brain1->setIdeas("I am a cat", 0);
-		brain1->setIdeas("run!!!!!", 1);
-		
-		
-		Brain* brain2 = cat2->getBrain();
+		brain2 = cat2->getBrain();
+		for (int i = 0; i < 100; i++)
+			brain1->setIdeas("is this my brain?", i);
+			
+		*cat2 = *cat1; //deep copy
+		std::cout << std::endl;
+		std::cout << brain1->getIdeas()[2] << std::endl;
+		std::cout << brain2->getIdeas()[2] << std::endl;
 		
 		std::cout << std::endl;
-		std::cout << brain2->getIdeas()[0] << std::endl;
-		std::cout << brain2->getIdeas()[1] << std::endl;
-		std::cout << std::endl;
+		brain2->setIdeas("testing my brain, is my brain working?", 11);
+		std::cout << brain1->getIdeas()[11] << std::endl;
+		std::cout << brain2->getIdeas()[11] << std::endl;
 		
-		// delete cat1;
+		std::cout << std::endl;
+		delete cat1;
+		delete cat2;
 	}
 	return 0;
 }

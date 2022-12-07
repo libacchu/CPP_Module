@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:24:57 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/30 15:12:59 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/12/06 15:06:19 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Brain
 {
 	private:
-		std::string ideas[100];
+		std::string* ideas;
 	public:
 		Brain( void );
 		Brain(const Brain& copy);

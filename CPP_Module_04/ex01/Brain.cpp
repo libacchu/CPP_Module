@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:24:55 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/30 15:19:19 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/12/06 15:06:12 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 Brain::Brain() {
 	std::cout << "Brain constructor called." << std::endl;
+	this->ideas = new std::string[100];
 }
 
 Brain::Brain(const Brain& copy) {
@@ -32,6 +33,7 @@ Brain& Brain::operator=( const Brain& rhs) {
 
 Brain::~Brain() {
 	std::cout << "Brain destructor called." << std::endl;
+	delete [] this->ideas;
 }
 
 const std::string*	Brain::getIdeas() const {

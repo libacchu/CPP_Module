@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 13:01:37 by libacchu          #+#    #+#             */
-/*   Updated: 2022/11/30 14:51:34 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:31:53 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,16 @@
 class Cat : public Animal
 {
 	private:
-		Brain*	catBrain;
+		Brain	catBrain;
 	public:
 		Cat( void );
 		Cat( const Cat& copy );
-		Cat& operator=( const Cat& rhs);
+		Cat& operator=( const Cat& rhs );
 		~Cat( void );
 
 		const std::string&	getType( void ) const;
 		Brain*				getBrain( void );
+		void				setType ( std::string type );
 		
 		void	makeSound( void ) const;
 };
