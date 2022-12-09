@@ -6,13 +6,13 @@
 #    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/07 17:38:20 by libacchu          #+#    #+#              #
-#    Updated: 2022/12/07 17:47:20 by libacchu         ###   ########.fr        #
+#    Updated: 2022/12/08 19:01:48 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		interface
 
-CC =		c++
+CC =		c++ -g
 CFLAGS =	-Wall -Werror -Wextra  -std=c++98
 
 RM = 		rm -rf
