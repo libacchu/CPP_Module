@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:35:15 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/09 17:32:04 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:32:36 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ class Bureaucrat
 		void			decrementGrade( void );
 		
 		bool			checkGradeError( int grade );
+		void			executeForm( AForm const & form );
 };
 
 std::ostream & operator<<( std::ostream & o, Bureaucrat const & rhs);

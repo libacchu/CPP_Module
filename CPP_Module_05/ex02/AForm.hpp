@@ -1,24 +1,56 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/17 19:30:30 by libacchu          #+#    #+#             */
+/*   Updated: 2022/12/12 16:38:27 by libacchu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef AFORM_HPP
 # define AFORM_HPP
 
 # include <iostream>
 # include <string>
+# include "Bureaucrat.hpp"
 
 class AForm
 {
+    private:
+        AForm( void );
+        const std::string	_name;
+        bool            	_signitureStatus;
+        const int       	_gradeToSign;
+        const int       	_gradeToExecute;
+		static const int	_minGrade = 150;
+		bool				checkGradeError( int grade);
+    public:
+		AForm( const std::string name, int gradeToSign, int gradeToExecute );
+        AForm( const AForm & copy);
+        AForm& operator=( const AForm & rhs );
+        virtual ~AForm( void );
 
-	public:
+		const std::string&	getName( void ) const;
+		const bool&			getSignitureStatus( void ) const;
+		const int&			getGradeToSign( void ) const;
+		const int&			getGradeToExecute( void ) const;
+		
+		bool				signForm( Bureaucrat &bureaucrat );
+		virtual void		execute( Bureaucrat const & executor ) const = 0;
 
-		AForm();
-		AForm( AForm const & src );
-		~AForm();
 
-		AForm &		operator=( AForm const & rhs );
+		class GradeTooHighException : public std::exception {
+			virtual const char* what() const throw();
+		};
 
-	private:
-
+		class GradeTooLowException : public std::exception {
+			virtual const char* what() const throw();
+		};
 };
 
-std::ostream &			operator<<( std::ostream & o, AForm const & i );
+std::ostream & operator<<(std::ostream & o, AForm const & rhs);
 
-#endif /* *********************************************************** AFORM_H */
+#  endif
