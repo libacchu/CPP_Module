@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:05:45 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/12 14:05:50 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:06:49 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ AForm::AForm(const std::string name, int gradeToSign, int gradeToExecute)
 _gradeToExecute(gradeToExecute)
 {
 	std::cout << B_BLUE "AForm parameter constructor called." DEFAULT << std::endl;
-	if (checkGradeError( _gradeToSign ))
-		new (this) AForm(name, _minGrade, gradeToExecute);
-	if (checkGradeError( _gradeToExecute ))
-		new (this) AForm(name, _gradeToSign, _minGrade);
+	// if (checkGradeError( _gradeToSign ))
+	// 	new (this) AForm(name, _minGrade, gradeToExecute);
+	// if (checkGradeError( _gradeToExecute ))
+	// 	new (this) AForm(name, _gradeToSign, _minGrade);
 }
 
 AForm::AForm( const AForm & copy): _name(copy._name + "_copy"), _signitureStatus(copy._signitureStatus), \
@@ -74,11 +74,11 @@ bool	AForm::signForm( Bureaucrat &bureaucrat ) {
 	return ( this->_signitureStatus );
 }
 
-bool AForm::checkGradeError( int grade ) {
+bool AForm::checkGradeError( int grade, int check ) const {
 	try {
 		if (grade < 1)
 			throw (AForm::GradeTooHighException());
-		else if (grade > _minGrade)
+		else if (grade > check)
 			throw (AForm::GradeTooLowException());	
 	}
 	catch (std::exception &e) {

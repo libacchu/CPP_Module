@@ -6,7 +6,7 @@
 #    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/17 14:33:08 by libacchu          #+#    #+#              #
-#    Updated: 2022/12/12 13:42:37 by libacchu         ###   ########.fr        #
+#    Updated: 2022/12/16 12:04:32 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ RM = 		rm -rf
 
 SRC = 		main.cpp \
 			Bureaucrat.cpp \
-			Form.cpp
+			AForm.cpp \
+			ShrubberyCreationForm.cpp \
+			PresidentialPardonForm.cpp \
 
 OBJ = 		$(SRC:.cpp=.o)
 

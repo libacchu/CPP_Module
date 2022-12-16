@@ -3,22 +3,23 @@
 
 # include <iostream>
 # include <string>
+# include "AForm.hpp"
 
-class PresidentialPardonForm
+class PresidentialPardonForm : public AForm
 {
-
-	public:
-
-		PresidentialPardonForm();
-		PresidentialPardonForm( PresidentialPardonForm const & src );
-		~PresidentialPardonForm();
-
-		PresidentialPardonForm &		operator=( PresidentialPardonForm const & rhs );
-
 	private:
+		const std::string	_target;
+		PresidentialPardonForm( void );
+	public:
+		PresidentialPardonForm( std::string	target );
+		PresidentialPardonForm( PresidentialPardonForm const & src );
+		PresidentialPardonForm &	operator=( PresidentialPardonForm const & rhs );
+		~PresidentialPardonForm( void );
 
+		const std::string&	getTarget( void ) const;
+		virtual void		execute( Bureaucrat const & executor ) const;
 };
 
-std::ostream &			operator<<( std::ostream & o, PresidentialPardonForm const & i );
+std::ostream &			operator<<( std::ostream & o, PresidentialPardonForm const& rhs );
 
-#endif /* ****************************************** PRESIDENTIALPARDONFORM_H */
+#endif

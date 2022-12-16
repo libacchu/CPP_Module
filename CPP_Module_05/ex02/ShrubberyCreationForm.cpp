@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:44:06 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/12 16:39:28 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:09:25 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,59 @@ const std::string&	ShrubberyCreationForm::getTarget( void ) const
 	return (this->_target);
 }
 
-virtual void	ShrubberyCreationForm::execute( Bureaucrat const & executor ) const
+void	ShrubberyCreationForm::execute( Bureaucrat const & executor ) const
 {
-	
+	/*TODO 
+		1. check if you can execute code
+		2. 
+	*/
+	try
+	{
+		// std::cout << executor << std::endl;
+		if (AForm::checkGradeError( executor.getGrade(), this->getGradeToExecute() ))
+			throw "Form cannot be executed";
+		ShrubberyCreationForm::printAsciiTree();
+	}
+	catch (std::exception &e)
+	{
+		
+	}
 }
 
-std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & i )
+void ShrubberyCreationForm::printAsciiTree( void ) const
 {
-	//o << "Value = " << i.getValue();
+	std::string fileName = _target + "_shrubbery";
+	std::ofstream file( fileName.c_str() );
+	
+	
+	if (!file) {
+		std::cout << B_RED "Creating file failed" DEFAULT << std::endl;
+		return ;
+	}
+	file <<"          v                     v			" << std::endl; 
+	file <<"         >X<                   >X<			" << std::endl;
+	file <<"          A                     A			" << std::endl;
+	file <<"         d$b                   d$b			" << std::endl;
+	file <<"       .d/$$b.               .d/$$b.		" << std::endl;
+	file <<"     .d$i$$/$$b.           .d$i$$/$$b.		" << std::endl;
+	file <<"        d$$@b                 d$$@b			" << std::endl;
+	file <<"       d/$$$ib               d/$$$ib		" << std::endl;
+	file <<"     .d$$$/$$$b            .d$$$/$$$b		" << std::endl;
+	file <<"   .d$$@$$$$/$$ib.       .d$$@$$$$/$$ib.	" << std::endl;
+	file <<"       d$$i$$b               d$$i$$b		" << std::endl;
+	file <<"      d/$$$$@$b             d/$$$$@$b		" << std::endl;
+	file <<"   .d$@$$/$$$$$@b.       .d$@$$/$$$$$@b.	" << std::endl;
+	file <<" .d$$$$i$$$/$$$$$$b.   .d$$$$i$$$/$$$$$$b.	" << std::endl;
+	file <<"         ###                   ###			" << std::endl;
+	file <<"         ###                   ###			" << std::endl;
+	file <<"         ###                   ###			" << std::endl;
+
+	file.close();
+}
+
+std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & rhs )
+{
+	/* TODO */
+	(void) rhs;
 	return o;
 }

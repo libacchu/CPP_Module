@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include <fstream>
 # include "AForm.hpp"
 
 class ShrubberyCreationForm : public AForm
@@ -11,6 +12,7 @@ class ShrubberyCreationForm : public AForm
 		const std::string	_target;
 		ShrubberyCreationForm( void );
 	public:
+		void	printAsciiTree( void ) const;
 		ShrubberyCreationForm( std::string target );
 		ShrubberyCreationForm( ShrubberyCreationForm const & src );
 		ShrubberyCreationForm&	operator=( ShrubberyCreationForm const & rhs );
@@ -20,6 +22,6 @@ class ShrubberyCreationForm : public AForm
 		virtual void		execute( Bureaucrat const & executor ) const;
 };
 
-std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & i );
+std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & rhs );
 
 #endif

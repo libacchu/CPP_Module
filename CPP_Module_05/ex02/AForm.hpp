@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:30:30 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/12 16:38:27 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:06:30 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <string>
 # include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class AForm
 {
     private:
@@ -26,7 +28,6 @@ class AForm
         const int       	_gradeToSign;
         const int       	_gradeToExecute;
 		static const int	_minGrade = 150;
-		bool				checkGradeError( int grade);
     public:
 		AForm( const std::string name, int gradeToSign, int gradeToExecute );
         AForm( const AForm & copy);
@@ -40,6 +41,7 @@ class AForm
 		
 		bool				signForm( Bureaucrat &bureaucrat );
 		virtual void		execute( Bureaucrat const & executor ) const = 0;
+		bool				checkGradeError( int grade, int check ) const;
 
 
 		class GradeTooHighException : public std::exception {

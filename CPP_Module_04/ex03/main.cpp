@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 11:34:15 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/09 08:41:23 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/12/14 15:47:37 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 
 int main()
 {
+	{
+		Character *obj
+	}
+	
+	
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
