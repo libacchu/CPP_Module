@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 18:14:11 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/17 18:27:14 by libacchu         ###   ########.fr       */
+/*   Updated: 2022/12/17 18:31:45 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 template< typename T >
 T const&	max( T const& x, T const& y ) {
 	return ( (x > y) ? x : y );
-};
+}
 
 template< typename T >
 T const&	min( T const& x, T const& y ) {
