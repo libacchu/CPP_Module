@@ -1,15 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.cpp                                           :+:      :+:    :+:   */
+/*   C.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/16 19:58:46 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/17 10:57:23 by libacchu         ###   ########.fr       */
+/*   Created: 2022/12/17 09:36:29 by libacchu          #+#    #+#             */
+/*   Updated: 2022/12/17 12:25:54 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Base.hpp"
 
-Base::~Base( void ){}
+#ifndef C_HPP
+# define C_HPP
+
+# include <iostream>
+# include <string>
+# include "Base.hpp"
+
+class C : public  Base
+{
+	public:
+		~C();
+};
+
+#endif
