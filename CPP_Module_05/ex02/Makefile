@@ -6,7 +6,7 @@
 #    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/17 14:33:08 by libacchu          #+#    #+#              #
-#    Updated: 2022/12/16 12:04:32 by libacchu         ###   ########.fr        #
+#    Updated: 2023/01/03 11:14:00 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC = 		main.cpp \
 			AForm.cpp \
 			ShrubberyCreationForm.cpp \
 			PresidentialPardonForm.cpp \
+			RobotomyRequestForm.cpp
 
 OBJ = 		$(SRC:.cpp=.o)
 

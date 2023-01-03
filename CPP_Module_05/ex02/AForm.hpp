@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:30:30 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/16 13:06:30 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/03 13:20:04 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ class AForm
 		bool				signForm( Bureaucrat &bureaucrat );
 		virtual void		execute( Bureaucrat const & executor ) const = 0;
 		bool				checkGradeError( int grade, int check ) const;
+		bool				checkExecution( int grade, int check ) const;
 
 
 		class GradeTooHighException : public std::exception {
@@ -49,6 +50,10 @@ class AForm
 		};
 
 		class GradeTooLowException : public std::exception {
+			virtual const char* what() const throw();
+		};
+
+		class CannotBeExecuted : public std::exception {
 			virtual const char* what() const throw();
 		};
 };

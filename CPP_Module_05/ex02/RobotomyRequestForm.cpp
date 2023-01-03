@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 15:30:29 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/13 16:16:39 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:26:57 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ _target(src._target)
 RobotomyRequestForm &	RobotomyRequestForm::operator=( RobotomyRequestForm const & rhs )
 {
 	/* TODO */
+	(void) rhs;
 	return *this;
 }
 
@@ -48,8 +49,15 @@ const std::string&	RobotomyRequestForm::getTarget( void ) const
 	return (this->_target);
 }
 
-std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i )
+void	RobotomyRequestForm::execute( Bureaucrat const & executor ) const
 {
-	/* TODO */
-	return o;
+	static int i;
+
+	if (checkExecution( executor.getGrade(), this->getGradeToExecute() ))
+		throw ( AForm::CannotBeExecuted() );
+	if (i % 2)
+		std::cout << "Informs that " << this->getTarget() << " has been robotomized successfully." << std::endl;
+	else
+		std::cout << "Informs that the robotomy failed." << std::endl;
+	i++;
 }

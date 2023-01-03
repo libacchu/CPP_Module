@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:44:06 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/16 13:09:25 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:32:16 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,10 @@ void	ShrubberyCreationForm::execute( Bureaucrat const & executor ) const
 		1. check if you can execute code
 		2. 
 	*/
-	try
-	{
-		// std::cout << executor << std::endl;
-		if (AForm::checkGradeError( executor.getGrade(), this->getGradeToExecute() ))
-			throw "Form cannot be executed";
-		ShrubberyCreationForm::printAsciiTree();
-	}
-	catch (std::exception &e)
-	{
-		
-	}
+	// std::cout << executor << std::endl;
+	if (checkExecution( executor.getGrade(), this->getGradeToExecute() ))
+		throw ( AForm::CannotBeExecuted() );
+	ShrubberyCreationForm::printAsciiTree();
 }
 
 void ShrubberyCreationForm::printAsciiTree( void ) const
@@ -99,11 +92,4 @@ void ShrubberyCreationForm::printAsciiTree( void ) const
 	file <<"         ###                   ###			" << std::endl;
 
 	file.close();
-}
-
-std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & rhs )
-{
-	/* TODO */
-	(void) rhs;
-	return o;
 }

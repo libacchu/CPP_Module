@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:45:34 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/16 13:07:23 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:32:30 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,19 @@ const std::string&	PresidentialPardonForm::getTarget( void ) const
 
 void	PresidentialPardonForm::execute( Bureaucrat const & executor ) const
 {
-	try
-	{
-		// std::cout << executor << std::endl;
-		if (!AForm::checkGradeError( executor.getGrade(), this->getGradeToExecute() ))
-			throw ( GradeTooLowException() );
-		std::cout << "Informs that " << getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-}
-
-std::ostream &		operator<<( std::ostream & o, PresidentialPardonForm const & rhs )
-{
-	/* TODO */
-	(void) rhs;
-	return o;
+	if (checkExecution( executor.getGrade(), this->getGradeToExecute() ))
+		throw ( AForm::CannotBeExecuted() );
+	std::cout << "Informs that " << getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	
+	// try
+	// {
+	// 	// std::cout << executor << std::endl;
+	// 	if (!AForm::checkGradeError( executor.getGrade(), this->getGradeToExecute() ))
+	// 		throw ( GradeTooLowException() );
+	// 	std::cout << "Informs that " << getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	// }
+	// catch (std::exception &e)
+	// {
+	// 	std::cout << e.what() << std::endl;
+	// }
 }

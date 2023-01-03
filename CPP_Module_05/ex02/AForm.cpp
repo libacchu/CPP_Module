@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:05:45 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/16 13:06:49 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/03 13:21:43 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,22 @@ bool AForm::checkGradeError( int grade, int check ) const {
 	return (false);
 }
 
+bool AForm::checkExecution( int grade, int check ) const {
+	if (grade < 1 || grade > check)
+		return (true);
+	return (false);
+}
+
 const char* AForm::GradeTooHighException::what() const throw() {
 	return ("Exception: Grade too High");
 }
 
 const char* AForm::GradeTooLowException::what() const throw() {
 	return ("Exception: Grade too Low");
+}
+
+const char* AForm::CannotBeExecuted::what() const throw() {
+	return ("Exception: Form cannot be executed");
 }
 
 std::ostream & operator<<( std::ostream & o, AForm const & rhs) {
