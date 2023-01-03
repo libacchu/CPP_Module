@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:44:06 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/03 14:32:16 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:36:37 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ShrubberyCreationForm::execute( Bureaucrat const & executor ) const
 		2. 
 	*/
 	// std::cout << executor << std::endl;
-	if (checkExecution( executor.getGrade(), this->getGradeToExecute() ))
+	if (checkExecution( executor.getGrade(), this->getGradeToExecute(), this->getSignitureStatus() ))
 		throw ( AForm::CannotBeExecuted() );
 	ShrubberyCreationForm::printAsciiTree();
 }

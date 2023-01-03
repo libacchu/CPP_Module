@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:05:45 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/03 13:21:43 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:35:00 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ bool AForm::checkGradeError( int grade, int check ) const {
 	return (false);
 }
 
-bool AForm::checkExecution( int grade, int check ) const {
-	if (grade < 1 || grade > check)
+bool AForm::checkExecution( int grade, int check, bool status ) const {
+	if (grade < 1 || grade > check || status == false)
 		return (true);
 	return (false);
 }

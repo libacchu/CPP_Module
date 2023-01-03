@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 15:30:29 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/03 15:26:57 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/03 15:36:50 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	RobotomyRequestForm::execute( Bureaucrat const & executor ) const
 {
 	static int i;
 
-	if (checkExecution( executor.getGrade(), this->getGradeToExecute() ))
+	if (checkExecution( executor.getGrade(), this->getGradeToExecute(), this->getSignitureStatus() ))
 		throw ( AForm::CannotBeExecuted() );
 	if (i % 2)
 		std::cout << "Informs that " << this->getTarget() << " has been robotomized successfully." << std::endl;
