@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:45:34 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/03 15:36:21 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/04 14:33:42 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ _target(src._target)
 
 PresidentialPardonForm &	PresidentialPardonForm::operator=( PresidentialPardonForm const & rhs )
 {
-	/* TODO */
 	(void) rhs;
 	return (*this);
 }
@@ -49,10 +48,10 @@ const std::string&	PresidentialPardonForm::getTarget( void ) const
 	return (this->_target);
 }
 
-void	PresidentialPardonForm::execute( Bureaucrat const & executor ) const
+void	PresidentialPardonForm::runExecute( void ) const
 {
-	if (checkExecution( executor.getGrade(), this->getGradeToExecute(), this->getSignitureStatus() ))
-		throw ( AForm::CannotBeExecuted() );
+	// if (checkExecution( executor.getGrade(), this->getGradeToExecute(), this->getSignitureStatus() ))
+	// 	throw ( AForm::CannotBeExecuted() );
 	std::cout << "Informs that " << getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 	
 	// try

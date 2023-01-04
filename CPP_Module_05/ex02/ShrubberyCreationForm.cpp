@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:44:06 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/03 15:36:37 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/04 14:35:12 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,8 @@ _target(src._target)
 
 ShrubberyCreationForm &		ShrubberyCreationForm::operator=( ShrubberyCreationForm const & rhs )
 {
-	if ( this != &rhs )
-	{
-		AForm::operator=(rhs);
-	}
-	return *this;
+	(void) rhs;
+	return (*this);
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm( void )
@@ -51,15 +48,8 @@ const std::string&	ShrubberyCreationForm::getTarget( void ) const
 	return (this->_target);
 }
 
-void	ShrubberyCreationForm::execute( Bureaucrat const & executor ) const
+void	ShrubberyCreationForm::runExecute( void ) const
 {
-	/*TODO 
-		1. check if you can execute code
-		2. 
-	*/
-	// std::cout << executor << std::endl;
-	if (checkExecution( executor.getGrade(), this->getGradeToExecute(), this->getSignitureStatus() ))
-		throw ( AForm::CannotBeExecuted() );
 	ShrubberyCreationForm::printAsciiTree();
 }
 
