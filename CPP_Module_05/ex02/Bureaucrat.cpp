@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:35:53 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/03 15:46:34 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/04 14:37:51 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,13 @@ bool	Bureaucrat::checkGradeError( int grade ) {
 }
 
 void	Bureaucrat::executeForm( AForm const & form ) {
-	std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	try {
+		if ( form.execute( *this ) )
+			std::cout << this->getName() << B_BLUE " executed " DEFAULT << form.getName() << std::endl;
+	}
+	catch (...) {
+		std::cout << this->getName() << B_RED " cannot execute " DEFAULT << form.getName() << std::endl;
+	}
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
