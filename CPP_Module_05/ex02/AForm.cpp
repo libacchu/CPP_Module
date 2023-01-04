@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:05:45 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/04 14:29:32 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/04 14:53:04 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ bool	AForm::execute( Bureaucrat const & executor ) const {
 	if (checkExecution( executor.getGrade(), this->getGradeToExecute(), this->getSignitureStatus() )) {
 		throw ( AForm::CannotBeExecuted() );
 	}
-	runExecute( void );
+	runExecute();
 	return ( true );
 }
 

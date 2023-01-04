@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:45:34 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/04 14:33:42 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/04 14:50:38 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,5 @@ const std::string&	PresidentialPardonForm::getTarget( void ) const
 
 void	PresidentialPardonForm::runExecute( void ) const
 {
-	// if (checkExecution( executor.getGrade(), this->getGradeToExecute(), this->getSignitureStatus() ))
-	// 	throw ( AForm::CannotBeExecuted() );
 	std::cout << "Informs that " << getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
-	
-	// try
-	// {
-	// 	// std::cout << executor << std::endl;
-	// 	if (!AForm::checkGradeError( executor.getGrade(), this->getGradeToExecute() ))
-	// 		throw ( GradeTooLowException() );
-	// 	std::cout << "Informs that " << getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
-	// }
-	// catch (std::exception &e)
-	// {
-	// 	std::cout << e.what() << std::endl;
-	// }
 }
