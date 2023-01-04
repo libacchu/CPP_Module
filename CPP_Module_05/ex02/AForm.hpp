@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:30:30 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/03 15:33:48 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/04 14:29:47 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ class AForm
 		const int&			getGradeToExecute( void ) const;
 		
 		bool				signForm( Bureaucrat &bureaucrat );
-		virtual void		execute( Bureaucrat const & executor ) const = 0;
+		bool				execute( Bureaucrat const & executor ) const;
+		virtual void		runExecute( void ) const = 0;
 		bool				checkGradeError( int grade, int check ) const;
 		bool				checkExecution( int grade, int check, bool status ) const;
 
