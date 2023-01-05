@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:05:45 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/04 14:53:04 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/05 08:33:52 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@ AForm::AForm(const std::string name, int gradeToSign, int gradeToExecute)
 _gradeToExecute(gradeToExecute)
 {
 	std::cout << B_BLUE "AForm parameter constructor called." DEFAULT << std::endl;
-	// if (checkGradeError( _gradeToSign ))
-	// 	new (this) AForm(name, _minGrade, gradeToExecute);
-	// if (checkGradeError( _gradeToExecute ))
-	// 	new (this) AForm(name, _gradeToSign, _minGrade);
 }
 
 AForm::AForm( const AForm & copy): _name(copy._name + "_copy"), _signitureStatus(copy._signitureStatus), \
@@ -37,7 +33,7 @@ _gradeToSign(copy._gradeToSign), _gradeToExecute(copy._gradeToExecute)
 
 AForm& AForm::operator=( const AForm & rhs ) {
     std::cout << B_BLUE "AForm copy operator called." DEFAULT << std::endl;
-	/* _name, _gradeToSign, _gradeToExecute are constant and cannot be copied*/
+	/* _name, _gradeToSign, _gradeToExecute are constant and cannot be copied */
 	this->_signitureStatus = rhs._signitureStatus;
     return(*this);
 }
@@ -67,10 +63,10 @@ bool	AForm::signForm( Bureaucrat &bureaucrat ) {
 
 	if (bureaucrat.getGrade() <= this->_gradeToSign) {	
 		this->_signitureStatus = true;
-		std::cout << bureaucrat.getName() << " signed " << this->getName() << std::endl;
+		std::cout << bureaucrat.getName() << B_BLUE << " signed " << DEFAULT <<this->getName() << std::endl;
 	}
 	else
-		std::cout << bureaucrat.getName() << " couldn't signed " << this->getName() << std::endl;
+		std::cout << bureaucrat.getName() << B_RED << " couldn't signed " << DEFAULT << this->getName() << std::endl;
 	return ( this->_signitureStatus );
 }
 
