@@ -4,7 +4,7 @@
 # include <iostream>
 # include <string>
 # include <stdlib.h>
-#include <bits/stdc++.h>
+# include <bits/stdc++.h>
 
 # define DEFAULT "\033[0;39m"
 # define B_RED "\033[1;31m"
@@ -26,8 +26,6 @@ class ScalarTypes
 		ScalarTypes( ScalarTypes const & src );
 		ScalarTypes &	operator=( ScalarTypes const & rhs );
 		~ScalarTypes( void );
-
-		
 		
 		void	toChar( void );
 		void	toInt( void );
