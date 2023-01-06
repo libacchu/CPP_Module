@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 19:19:46 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/05 16:24:58 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/05 20:12:25 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,35 @@ class Array
 		int _size;
 		T*	_array;
 	public:
-		Array( void ): _size(1), _array(new T*()) {
+		Array<T>( void ): _size(0), _array(NULL) {
 			std::cout << B_BLUE "Default constructor called" DEFAULT << std::endl;
 		}
-		Array( unsigned int n ): _size(n), _array(new T[n]) {
+		Array<T>( unsigned int n ): _size(n) {
 			std::cout << B_BLUE "Unsigned int constructor called" DEFAULT << std::endl;
+			// if (n == 0)
+			// 	throw (Array::OutOfBounds());
+			_array = new T[n];
 		}
-		Array( const Array& copy ){
+		Array<T>( const Array& copy ){
 			std::cout << B_BLUE "Copy constructor called" DEFAULT << std::endl;
 			*this = copy;
 		}
-		Array* operator=( const Array& copy ){
+		Array<T>& operator=( const Array& copy ){
 			std::cout << B_BLUE "Assignment operator called" DEFAULT << std::endl;
-			*this = copy;
+			if (_size > 0)
+				delete [] _array;
+			_size = copy.size();
+			_array = new T[_size];
+			for (int i = 0; i < _size; i++) {
+				_array[i] = copy._array[i];
+			}
 			return (*this);
 		}
-		virtual ~Array( void );
+		~Array<T>( void ) {
+			std::cout << B_BLUE "Destructor called" DEFAULT << std::endl;
+			if (_size > 0)
+				delete [] _array;
+		}
 		
 		T& operator[]( int pos ) {
 			if (pos >= _size || pos < 0)
@@ -53,7 +66,7 @@ class Array
 			return (_array[pos]);
 		}
 		
-		int	size( void ) {
+		int	size( void ) const {
 			return (_size);
 		}
 		
