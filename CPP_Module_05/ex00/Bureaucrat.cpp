@@ -6,36 +6,22 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:35:53 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/09 11:11:05 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:05:58 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat( void ) {
+Bureaucrat::Bureaucrat( void ) : _name("_noname_"), _grade(_minGrade) {
 	std::cout << B_GREEN "Bureaucrat default constructor called." DEFAULT << std::endl;
-	try {
-		if (this->_grade < 1)
-			throw (Bureaucrat::GradeTooHighException());
-		else if (this->_grade > _minGrade)
-			throw (Bureaucrat::GradeTooLowException());	
-	}
-	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
 }
 
 Bureaucrat::Bureaucrat( std::string name, int grade ) : _name(name), _grade(grade) {
 	std::cout << B_GREEN "Bureaucrat parameter constructor called." DEFAULT << std::endl;
-	try {
-		if (this->_grade < 1)
-			throw (Bureaucrat::GradeTooHighException());
-		else if (this->_grade > _minGrade)
-			throw (Bureaucrat::GradeTooLowException());	
-	}
-	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
+	if (this->_grade < 1)
+		throw (Bureaucrat::GradeTooHighException());
+	else if (this->_grade > _minGrade)
+		throw (Bureaucrat::GradeTooLowException());	
 }
 
 Bureaucrat::Bureaucrat( const Bureaucrat & copy ) : _name(copy.getName() + "_copy") {

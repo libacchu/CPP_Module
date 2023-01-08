@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 15:30:29 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/04 14:34:47 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:07:59 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,12 @@ const std::string&	RobotomyRequestForm::getTarget( void ) const
 	return (this->_target);
 }
 
-void	RobotomyRequestForm::runExecute( void ) const
+bool	RobotomyRequestForm::execute( Bureaucrat const & executor ) const
 {
+	if (checkExecution( executor.getGrade(), this->getGradeToExecute(), this->getSignitureStatus() )) {
+		throw ( AForm::CannotBeExecuted() );
+	}
+	
 	static int i;
 
 	std::cout << "Makes some drilling noises..." << std::endl;
@@ -58,4 +62,5 @@ void	RobotomyRequestForm::runExecute( void ) const
 	else
 		std::cout << "Informs that the robotomy failed." << std::endl;
 	i++;
+	return( true );
 }

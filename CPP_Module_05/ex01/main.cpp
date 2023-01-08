@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:35:04 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/12 13:50:09 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/07 17:28:17 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main ( void )
 		
 		try {
 			std::cout << City1 << std::endl;
-			City1.signForm(John);
+			City1.beSigned(John);
 			std::cout << City1 << std::endl;
 		}
 		catch (std::exception &e){
@@ -35,12 +35,12 @@ int main ( void )
 		std::cout << std::endl;
 		std::cout << B_YELLOW "---------- TEST 2 ----------" DEFAULT << std::endl;
 		
-		Bureaucrat Matthew("Matthew", 151);
-		Form		City2("City2", 4, 151);
+		Bureaucrat Matthew("Matthew", 4);
+		Form		City2("City2", 4, 15);
 		
 		try {
 			std::cout << City2 << std::endl;
-			City2.signForm(Matthew);
+			Matthew.signForm (City2);
 			std::cout << City2 << std::endl;
 		}
 		catch (std::exception &e){
@@ -51,11 +51,11 @@ int main ( void )
 		std::cout << std::endl;
 		std::cout << B_YELLOW "---------- TEST 3 ----------" DEFAULT << std::endl;
 		
-		Bureaucrat Luke("Luke", 20);
+		Bureaucrat Luke("Luke", 23);
 		Form		City3("City3", 20, 20);
 		try {
 			std::cout << City3 << std::endl;
-			City3.signForm(Luke);
+			Luke.signForm(City3);
 			std::cout << City3 << std::endl;
 		}
 		catch (std::exception &e){

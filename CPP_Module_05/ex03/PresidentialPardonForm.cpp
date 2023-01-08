@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:45:34 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/05 11:32:15 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:09:02 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ const std::string&	PresidentialPardonForm::getTarget( void ) const
 	return (this->_target);
 }
 
-void	PresidentialPardonForm::runExecute( void ) const
+bool	PresidentialPardonForm::execute( Bureaucrat const & executor ) const
 {
+	if (checkExecution( executor.getGrade(), this->getGradeToExecute(), this->getSignitureStatus() )) {
+		throw ( AForm::CannotBeExecuted() );
+	}
 	std::cout << "Informs that " << getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	return( true );
 }

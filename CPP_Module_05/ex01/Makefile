@@ -6,14 +6,14 @@
 #    By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/17 14:33:08 by libacchu          #+#    #+#              #
-#    Updated: 2022/12/12 13:42:37 by libacchu         ###   ########.fr        #
+#    Updated: 2023/01/07 17:29:18 by libacchu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =		bureaucrat
 
 CC =		c++
-CFLAGS =	-Wall -Werror -Wextra  -std=c++98 -g
+CFLAGS =	-Wall -Werror -Wextra  -std=c++98
 
 RM = 		rm -rf
 

@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:35:15 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/09 17:32:04 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/07 17:01:37 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include "Form.hpp"
 
 #define DEFAULT "\033[0;39m"
 #define B_RED "\033[1;31m"
@@ -22,6 +23,8 @@
 #define B_YELLOW "\033[1;33m"
 #define B_GREEN "\033[1;32m"
 #define B_PINK "\033[1;35m"
+
+class Form;
 
 class Bureaucrat
 {
@@ -51,6 +54,8 @@ class Bureaucrat
 		void			decrementGrade( void );
 		
 		bool			checkGradeError( int grade );
+
+		void			signForm( Form& form );
 };
 
 std::ostream & operator<<( std::ostream & o, Bureaucrat const & rhs);

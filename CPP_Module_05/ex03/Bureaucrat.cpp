@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:35:53 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/04 14:37:51 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/07 17:44:23 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,15 @@ void	Bureaucrat::decrementGrade( void ) {
 	this->_grade++;
 	if (this->_grade > _minGrade)
 		throw (Bureaucrat::GradeTooLowException());	
+}
+
+void		Bureaucrat::signForm( AForm& form ) {
+	if ( form.beSigned( *this ) )
+			std::cout << _name << " signed " << form.getName() << std::endl;
+	else if ( form.getSignitureStatus() == false ) {
+		std::cout << _name << " couldn't signed " << form.getName();
+		std::cout << " because grade is too low." << std::endl;
+	}
 }
 
 bool	Bureaucrat::checkGradeError( int grade ) {

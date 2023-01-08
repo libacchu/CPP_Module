@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:44:06 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/04 14:35:12 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:08:33 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,13 @@ const std::string&	ShrubberyCreationForm::getTarget( void ) const
 	return (this->_target);
 }
 
-void	ShrubberyCreationForm::runExecute( void ) const
+bool	ShrubberyCreationForm::execute( Bureaucrat const & executor ) const
 {
+	if (checkExecution( executor.getGrade(), this->getGradeToExecute(), this->getSignitureStatus() )) {
+		throw ( AForm::CannotBeExecuted() );
+	}
 	ShrubberyCreationForm::printAsciiTree();
+	return( true );
 }
 
 void ShrubberyCreationForm::printAsciiTree( void ) const

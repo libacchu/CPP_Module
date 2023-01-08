@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:05:45 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/05 10:50:31 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:01:23 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,11 @@ const int&	AForm::getGradeToExecute( void ) const {
 }
 
 /* ------------ METHODS ------------ */
-bool	AForm::signForm( Bureaucrat &bureaucrat ) {
+bool	AForm::beSigned( Bureaucrat &bureaucrat ) {
 
-	if (bureaucrat.getGrade() <= this->_gradeToSign) {	
+	if (bureaucrat.getGrade() <= this->_gradeToSign)
 		this->_signitureStatus = true;
-		std::cout << bureaucrat.getName() << B_BLUE << " signed " << DEFAULT <<this->getName() << std::endl;
-	}
-	else
-		std::cout << bureaucrat.getName() << B_RED << " couldn't signed " << DEFAULT << this->getName() << std::endl;
 	return ( this->_signitureStatus );
-}
-
-bool	AForm::execute( Bureaucrat const & executor ) const {
-	if (checkExecution( executor.getGrade(), this->getGradeToExecute(), this->getSignitureStatus() )) {
-		throw ( AForm::CannotBeExecuted() );
-	}
-	runExecute();
-	return ( true );
 }
 
 bool AForm::checkGradeError( int grade, int check ) const {

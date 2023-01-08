@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:35:04 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/05 08:31:11 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:04:36 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main ( void )
 			std::cout << std::endl;
 			std::cout << form << std::endl;
 
-			form.signForm( Peter );
+			form.beSigned( Peter );
 			Peter.executeForm( form );
 			
 			std::cout << form << std::endl;
@@ -51,7 +51,7 @@ int main ( void )
 			std::cout << form << std::endl;
 			
 			Paul.executeForm( form );
-			form.signForm( Paul );
+			form.beSigned( Paul );
 			Paul.executeForm( form );
 			form.execute( Paul );
 			form.execute( Paul );
@@ -75,7 +75,7 @@ int main ( void )
 			std::cout << std::endl;
 			std::cout << form << std::endl;
 			
-			form.signForm( Linda );
+			form.beSigned( Linda );
 			Linda.executeForm( form );
 
 			std::cout << form << std::endl;
@@ -96,7 +96,7 @@ int main ( void )
 			std::cout << std::endl;
 			std::cout << form << std::endl;
 			
-			form.signForm( John );
+			John.signForm( form );
 			John.executeForm( form );
 
 			std::cout << form << std::endl;
@@ -117,7 +117,7 @@ int main ( void )
 			std::cout << std::endl;
 			std::cout << form << std::endl;
 			
-			form.signForm( William );
+			form.beSigned( William );
 			William.executeForm( form );
 
 			std::cout << form << std::endl;

@@ -6,13 +6,13 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:35:53 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/09 17:41:11 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/07 17:41:11 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat( void ) : _name("unnamed form"), _grade(150) {
+Bureaucrat::Bureaucrat( void ) : _name("_noname_"), _grade(150) {
 	std::cout << B_GREEN "Bureaucrat default constructor called." DEFAULT << std::endl;
 }
 
@@ -70,6 +70,15 @@ bool	Bureaucrat::checkGradeError( int grade ) {
 		return (true);
 	}
 	return (false);
+}
+
+void			Bureaucrat::signForm( Form& form ) {
+	if (form.beSigned( *this ))
+			std::cout << _name << " signed " << form.getName() << std::endl;
+	else if ( form.getSignitureStatus() == false ) {
+		std::cout << _name << " couldn't signed " << form.getName();
+		std::cout << " because grade is too low." << std::endl;
+	}
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {

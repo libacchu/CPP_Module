@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:35:04 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/05 11:53:23 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:22:51 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main ( void )
 			std::cout << std::endl;
 			std::cout << *rrf << std::endl;
 
-			rrf->signForm( Peter );
+			Peter.signForm(*rrf);
 			Peter.executeForm( *rrf );
 			
 			std::cout << *rrf << std::endl;
@@ -43,7 +43,7 @@ int main ( void )
 		}
 		catch (std::string err) {
 			std::cout << B_RED << err << DEFAULT << std::endl;
-			rrf = nullptr;
+			rrf = NULL;
 		}
 		if (rrf)
 			delete rrf;
@@ -62,7 +62,7 @@ int main ( void )
 			std::cout << std::endl;
 			std::cout << *rrf << std::endl;
 
-			rrf->signForm( Peter );
+			rrf->beSigned( Peter );
 			Peter.executeForm( *rrf );
 			
 			std::cout << *rrf << std::endl;
@@ -73,9 +73,9 @@ int main ( void )
 		}
 		catch (std::string err) {
 			std::cout << B_RED << err << DEFAULT << std::endl;
-			rrf = nullptr;
+			rrf = NULL;
 		}
-		if (rrf != nullptr)
+		if (rrf)
 			delete rrf;
 	}
 		{
@@ -92,7 +92,7 @@ int main ( void )
 			std::cout << std::endl;
 			std::cout << *rrf << std::endl;
 
-			rrf->signForm( Peter );
+			rrf->beSigned( Peter );
 			Peter.executeForm( *rrf );
 			
 			std::cout << *rrf << std::endl;
@@ -103,9 +103,9 @@ int main ( void )
 		}
 		catch (std::string err) {
 			std::cout << B_RED << err << DEFAULT << std::endl;
-			rrf = nullptr;
+			rrf = NULL;
 		}
-		if (rrf != nullptr)
+		if (rrf)
 			delete rrf;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 19:45:04 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/09 17:41:53 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/07 17:25:24 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,10 @@ const int&	Form::getGradeToExecute( void ) const {
 }
 
 /* ------------ METHODS ------------ */
-bool	Form::signForm( Bureaucrat &bureaucrat ) {
+bool	Form::beSigned( Bureaucrat &bureaucrat ) {
 
-	if (bureaucrat.getGrade() <= this->_gradeToSign) {	
+	if (bureaucrat.getGrade() <= this->_gradeToSign)
 		this->_signitureStatus = true;
-		std::cout << bureaucrat.getName() << " signed " << this->getName() << std::endl;
-	}
-	else
-		std::cout << bureaucrat.getName() << " couldn't signed " << this->getName() << std::endl;
 	return ( this->_signitureStatus );
 }
 
