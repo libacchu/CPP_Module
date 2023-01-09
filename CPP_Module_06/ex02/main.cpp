@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 10:05:34 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/17 12:52:43 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/08 21:38:58 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,20 @@ Base*	generate( void )
 	srand( time(NULL) );
 	randomNumber = rand() % 3;
 	
+	std::cout << B_GREEN "Generated" DEFAULT << std::endl;
 	switch (randomNumber)
 	{
 		case 0:
 			ret = new A();
+			std::cout << "Class A" << std::endl;
 			break;
 		case 1:
 			ret = new B();
+			std::cout << "Class B" << std::endl;
 			break;
 		case 2:
 			ret = new C();
+			std::cout << "Class C" << std::endl;
 			break;
 	}
 	return ( ret );
@@ -66,7 +70,6 @@ void identify( Base* p )
 	else if (c) {
 		std::cout << "Class C" << std::endl;
 	}
-	
 }
 
 void identify( Base& p )
@@ -83,7 +86,6 @@ void identify( Base& p )
 		(void) a;
 	}
 	catch (std::exception e) {
-		
 	}
 	try {
 		B& b = dynamic_cast<B&>(p);
@@ -95,7 +97,7 @@ void identify( Base& p )
 	}
 	try {
 		C& c = dynamic_cast<C&>(p);
-		std::cout << "Class B" << std::endl;
+		std::cout << "Class C" << std::endl;
 		(void) c;
 	}
 	catch (std::exception e) {

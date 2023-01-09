@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 19:21:32 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/16 19:48:39 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/08 18:55:29 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,13 @@ int	main( void )
 	std::cout << "ptr = " << ptr->string2 << std::endl;
 	
 	raw = serialize(ptr);
+	
 	ptr2 = deserialize(raw);
 	
+	std::cout << std::endl;
 	std::cout << "ptr2 = " << ptr2->string1 << std::endl;
 	std::cout << "ptr2 = " << ptr2->string2 << std::endl;
+
+	delete ptr;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 15:11:19 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/16 18:36:52 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/08 21:36:48 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ int	main(int argc, char **argv)
 		std::cerr << e.what() << std::endl;
 		return (1);
 	}
-	
 	return (0);
 }

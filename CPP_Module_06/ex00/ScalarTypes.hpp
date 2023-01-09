@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarTypes.hpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/08 17:31:30 by libacchu          #+#    #+#             */
+/*   Updated: 2023/01/08 18:34:43 by libacchu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #ifndef SCALARTYPES_HPP
 # define SCALARTYPES_HPP
 
 # include <iostream>
 # include <string>
-# include <stdlib.h>
-# include <bits/stdc++.h>
 
 # define DEFAULT "\033[0;39m"
 # define B_RED "\033[1;31m"
@@ -37,8 +48,5 @@ class ScalarTypes
 		};
 
 };
-
-
-std::ostream &			operator<<( std::ostream & o, ScalarTypes const & rhs );
 
 #endif

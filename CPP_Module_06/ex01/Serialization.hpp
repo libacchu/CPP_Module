@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 19:03:57 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/16 19:46:46 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/08 18:40:10 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ struct Data
 	std::string string2;
 };
 
-uintptr_t	serialize(Data* ptr);
-Data*		deserialize(uintptr_t raw);
+uintptr_t	serialize( Data* ptr );
+Data*		deserialize( uintptr_t raw );
 
 #endif

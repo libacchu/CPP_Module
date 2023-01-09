@@ -6,13 +6,11 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:54:49 by libacchu          #+#    #+#             */
-/*   Updated: 2022/12/16 18:56:39 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/08 18:36:38 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarTypes.hpp"
-
-/*------------------------------- CONSTRUCTOR --------------------------------*/
 
 ScalarTypes::ScalarTypes( void )
 {
@@ -33,7 +31,6 @@ ScalarTypes::ScalarTypes( const std::string input ) : _input( input ), _valid(fa
 		if (_double != 0)
 			_valid = true;
 	}
-	std::cout << "double input: " << _double << std::endl;
 }
 
 ScalarTypes::ScalarTypes( const ScalarTypes & src )
@@ -42,14 +39,10 @@ ScalarTypes::ScalarTypes( const ScalarTypes & src )
 	*this = src;
 }
 
-/*-------------------------------- DESTRUCTOR --------------------------------*/
-
 ScalarTypes::~ScalarTypes()
 {
 	std::cout << B_GREEN "ScalarTypes destructor called." DEFAULT << std::endl;
 }
-
-/*--------------------------------- OVERLOAD ---------------------------------*/
 
 ScalarTypes &	ScalarTypes::operator=( ScalarTypes const & rhs )
 {
@@ -62,13 +55,17 @@ ScalarTypes &	ScalarTypes::operator=( ScalarTypes const & rhs )
 
 void	ScalarTypes::toChar( void )
 {
+	char to_convert = static_cast<char> (_double);
+	
 	std::cout << "char: ";
-	if (_valid && isprint(static_cast<char> (atoi( _input.c_str() ))))
+	if (_valid)
 	{
-		if (_input.length() > 0 && isprint( atoi( _input.c_str() )))
-			std::cout << static_cast<char> (atoi( _input.c_str() )) << std::endl;
-		else if (!isprint( atoi( _input.c_str() )))
+		if (_input.length() > 0 && isprint( to_convert ))
+			std::cout << to_convert << std::endl;
+		else if ( _double >= 0 && _double <= 255)
 			std::cout << "Non displayable" << std::endl;
+		else
+			std::cout << "impossible" << std::endl;
 	}
 	else
 		std::cout << "impossible" << std::endl;
@@ -76,13 +73,15 @@ void	ScalarTypes::toChar( void )
 
 void	ScalarTypes::toInt( void )
 {
+	int to_convert = static_cast<int> ( _double );
+	
 	std::cout << "int: ";
 	if (_valid && _double == _double)
 	{
 		if ( _double > INT_MAX || _double < INT_MIN )
 			std::cout << "impossible"  << std::endl;
 		else
-			std::cout << static_cast<int> (atoi( _input.c_str() )) << std::endl;
+			std::cout << to_convert << std::endl;
 	}
 	else
 		std::cout << "impossible" << std::endl;
@@ -120,8 +119,3 @@ const char* ScalarTypes::WrongInput::what() const throw() {
 	return ("Exception: Wrong input");
 }
 
-std::ostream &			operator<<( std::ostream & o, ScalarTypes const & rhs )
-{
-	(void) rhs;
-	return o;
-}
