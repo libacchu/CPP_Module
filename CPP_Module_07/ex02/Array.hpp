@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 19:19:46 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/05 20:12:25 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/10 09:40:37 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class Array
 			// 	throw (Array::OutOfBounds());
 			_array = new T[n];
 		}
-		Array<T>( const Array& copy ){
+		Array<T>( const Array& copy ): _size(0), _array(NULL) {
 			std::cout << B_BLUE "Copy constructor called" DEFAULT << std::endl;
 			*this = copy;
 		}
@@ -62,7 +62,7 @@ class Array
 		
 		T& operator[]( int pos ) {
 			if (pos >= _size || pos < 0)
-				throw (Array::OutOfBounds());
+				throw (std::out_of_range("Out of Range."));
 			return (_array[pos]);
 		}
 		
@@ -70,11 +70,7 @@ class Array
 			return (_size);
 		}
 		
-		class OutOfBounds : public std::exception {
-			virtual const char* what() const throw() {
-				return ("Out of Bounds");
-			}
-		};
+
 };
 
 #endif
