@@ -6,6 +6,7 @@ CFLAGS =	-Wall -Werror -Wextra  -std=c++98 -g
 RM = 		rm -rf
 
 SRC = 		main.cpp \
+			Span.cpp
 
 OBJ = 		$(SRC:.cpp=.o)
 

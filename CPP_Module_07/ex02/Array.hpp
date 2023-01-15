@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 19:19:46 by libacchu          #+#    #+#             */
-/*   Updated: 2023/01/10 09:40:37 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/01/15 10:14:29 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ class Array
 		int	size( void ) const {
 			return (_size);
 		}
-		
-
 };
 
 #endif
