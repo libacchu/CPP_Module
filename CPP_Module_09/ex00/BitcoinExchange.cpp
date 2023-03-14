@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:01:18 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/14 21:26:56 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/14 22:13:23 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void BitcoinExchange::readInput(std::ifstream &file_input)
 		// try
 		// {
 		// 	/* code */
-		// 	isDateValid(date);
+			if (isDateValid(date) == false)
+				std::cerr << "Error: bad input => " << date << std::endl;
 		// }
 		// catch(const std::exception& e)
 		// {
@@ -63,7 +64,7 @@ void BitcoinExchange::readInput(std::ifstream &file_input)
 		// try
 		// {
 		// 	/* code */
-		// 	isValueValid(date);
+			isValueValid(bitcoin_value);
 		// }
 		// catch(const std::exception& e)
 		// {
@@ -82,8 +83,56 @@ void BitcoinExchange::readInput(std::ifstream &file_input)
 
 bool BitcoinExchange::isDateValid(std::string date)
 {
-	(void) date;
+	bool isLeap = false;
+	int year = 0, month = 0, day = 0;
+	std::istringstream ss(date);
+	for(int i = 0; i < 3; i++)
+	{
+		std::string tmp;
+		getline(ss, tmp, '-');
+		int digit = atoi(tmp.c_str());
+		if (i == 0)
+		{
+			year = digit;
+			if (year % 400 == 0)
+				isLeap = true;
+			else if (year % 4 == 0 && year % 100 != 0)
+				isLeap = true;
+		}
+		if (i == 1)
+		{
+			month = digit;
+			if (month < 0 || month > 12)
+				return (false);
+		}
+		if ( i == 2)
+		{
+			day = digit;
+			if (day < 0 || day > 31)
+				return (false);
+			if ((month == 02) && \
+					((isLeap == true && day > 29) ||
+					(isLeap == false && day > 28)))
+			{
+				return (false);
+			}
+			if ((month == 9 || month == 04 || month == 6 || month == 11) && 
+					day > 30)
+			{
+				return (false);
+			}
+		}
+	}
 	return true;
+}
+
+bool BitcoinExchange::isValueValid(double value)
+{
+	if (value < 0)
+		std::cerr << "Error: not a positive number" << std::endl;
+	if (value > 1000)
+		std::cerr << "Error: too large a number" << std::endl;
+	return (true);
 }
 
 void BitcoinExchange::createDatabase(std::string path)
