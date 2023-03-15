@@ -75,7 +75,7 @@ rm -f invalid_date.txt
 printf "${BYellow} PDF inputs... \n${Color_Off}"
 touch input.txt
 echo "date | value
-2011-01-03 | 3
+2011-01-03 | 3 
 2011-01-03 | 2
 2011-01-03 | 1
 2011-01-03 | 1.2

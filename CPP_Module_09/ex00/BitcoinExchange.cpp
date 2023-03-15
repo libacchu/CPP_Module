@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:01:18 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/15 11:30:10 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:03:03 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ void BitcoinExchange::createDatabase(std::string path)
 		
 		_database.insert(std::pair<std::string, double> (date, bitcoin_price));
 	}
-	// print_database(10);
+	print_database(1614);
 }
 
 void BitcoinExchange::print_database(int nbr_of_lines)
@@ -166,7 +166,8 @@ void BitcoinExchange::print_database(int nbr_of_lines)
 	
 	for (int i = 0; i < nbr_of_lines; i++)
 	{
-		std::cout << it->first << ": " << it->second << std::endl;
+		double tmp = it->second + it->second;
+		std::cout << it->first << ": " << std::fixed  << tmp << std::endl;
 		it++;
 	}
 }
