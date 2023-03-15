@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:01:18 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/14 22:13:23 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:30:10 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ BitcoinExchange::BitcoinExchange(std::string input) : _input(input)
 	file_input.open(input.c_str());
 	if (!file_input.is_open())
 	{
-		throw "Error: could not open file.";
+		std::cerr <<  "Error: could not open file." << std::endl;
+		return;
 	}
 	createDatabase("data.csv");
 	
@@ -45,37 +46,24 @@ void BitcoinExchange::readInput(std::ifstream &file_input)
 		std::istringstream ss(buffer);
 		
 		getline(ss, date, '|');
-		// TODO
-		// try
-		// {
-		// 	/* code */
-			if (isDateValid(date) == false)
-				std::cerr << "Error: bad input => " << date << std::endl;
-		// }
-		// catch(const std::exception& e)
-		// {
-		// 	std::cerr << e.what() << '\n';
-		// }
-		// std::cout << "date = " << date << std::endl;
+		if (isDateValid(date) == false)
+		{
+			std::cerr << "Error: bad input => " << date << std::endl;
+			continue;
+		}
 		getline(ss, value, '|');
 		double bitcoin_value = atof(value.c_str());
-		// std::cout << "value = " << bitcoin_value << std::endl;
-		// TODO
-		// try
-		// {
-		// 	/* code */
-			isValueValid(bitcoin_value);
-		// }
-		// catch(const std::exception& e)
-		// {
-		// 	std::cerr << e.what() << '\n';
-		// }
+		if (isValueValid(bitcoin_value) == false)
+		{
+			continue;
+		}
 		std::map<std::string, double>::iterator it = _database.find(date);
 		if (it == _database.end())
 		{
 			it = _database.lower_bound(date);
 			if (it == _database.begin())
-				std::cerr << "Price not available\n"; //TODO throw error
+				std::cerr << "Error: Price not available\n"; //TODO throw error
+			it--;
 		}
 		std::cout << date << " => " << value << " = " << (bitcoin_value * it->second) << std::endl;
 	}
@@ -128,10 +116,15 @@ bool BitcoinExchange::isDateValid(std::string date)
 
 bool BitcoinExchange::isValueValid(double value)
 {
-	if (value < 0)
+	if (value < 0) {
 		std::cerr << "Error: not a positive number" << std::endl;
+		return (false);
+	}
 	if (value > 1000)
+	{
 		std::cerr << "Error: too large a number" << std::endl;
+		return (false);
+	}
 	return (true);
 }
 
