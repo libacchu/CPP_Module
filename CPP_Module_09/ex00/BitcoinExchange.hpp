@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:04:13 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/15 11:04:46 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/15 12:10:06 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <map>
 # include <fstream>
 # include <sstream>
-#include <cstdlib>
+# include <cstdlib>
 
 class BitcoinExchange
 {

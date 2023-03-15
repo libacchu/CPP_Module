@@ -38,6 +38,9 @@ touch negtivenumber.txt
 echo "date | value
 2017-02-19 | -2
 2017-02-22 | -130.01
+
+
+
 2017-02-25 | -10.37
 2017-02-28 | -999" > negtivenumber.txt
 ./btc negtivenumber.txt
