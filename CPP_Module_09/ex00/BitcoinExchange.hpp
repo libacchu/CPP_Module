@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:04:13 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/15 12:10:06 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:31:17 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class BitcoinExchange
 {
 	private:
 		std::string _input;
+		std::string _database_start_date;
+		std::string _database_end_date;
 		std::map<std::string, double> _database; // Map container
 		
 		void print_database(int nbr_of_lines);
@@ -34,14 +36,17 @@ class BitcoinExchange
 		BitcoinExchange( BitcoinExchange const & src );
 		~BitcoinExchange();
 
-		void createDatabase(std::string path);
+		bool createDatabase(std::string path);
 		void readInput(std::ifstream &file_input);
 		bool isDateValid(std::string date);
-		bool isValueValid(double value);
+		bool isValueValid(double value, std::string Ovalue);
+		bool isPriceValid(double value, std::string price);
+		
+		std::string to_string(double num);
 		
 		BitcoinExchange &		operator=( BitcoinExchange const & rhs );
 };
 
-std::ostream &			operator<<( std::ostream & o, BitcoinExchange const & i );
+double    to_double(std::string str);
 
 #endif

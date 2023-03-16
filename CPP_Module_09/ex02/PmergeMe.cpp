@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:01:18 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/16 11:37:37 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:06:24 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ PmergeMe::PmergeMe(int ac, char** av)
 	std::cout << std::endl;
 	
 	
-	double start = get_time_in_ms();
+	long double start = get_time_in_ms();
 	sortVector(ac, av);
-	double end = get_time_in_ms();
-	// printVector(_v);
+	long double end = get_time_in_ms();
+
 	std::cout << "start = " << start << std::endl;
 	std::cout << "end = " << end << std::endl;
-	std::cout << "Time to process a range of " << _v.size() <<  " elements with std::vector : " << std::fixed << (end - start) * .00001 << " us" <<std::endl;
+	std::cout << "Time to process a range of " << _v.size() <<  " elements with std::vector : " << std::fixed << (end - start) << " us" <<std::endl;
 	
 	start = get_time_in_ms();
 	sortDeque(ac, av);
@@ -68,15 +68,15 @@ PmergeMe::PmergeMe(int ac, char** av)
 	
 	std::cout << "start = " << start << std::endl;
 	std::cout << "end = " << end << std::endl;
-	std::cout << "Time to process a range of " << _v.size() <<  " elements with std::deque : " << std::fixed << (end - start) * .00001 << " us" <<std::endl;
+	std::cout << "Time to process a range of " << _v.size() <<  " elements with std::deque : " << std::fixed << (end - start) << " us" <<std::endl;
 }
 
-double	PmergeMe::get_time_in_ms(void)
+long double	PmergeMe::get_time_in_ms(void)
 {
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	return (tv.tv_usec);
+	return ((tv.tv_sec * 1000000) + (tv.tv_usec));
 }
 
 
