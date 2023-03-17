@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:04:13 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/15 16:57:54 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/17 14:14:26 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,15 @@
 # include <string>
 # include <stack>
 # include <iomanip>
+# include <sstream>
 
 class RPN
 {
 	private:
-		std::stack<int> _st;
+		std::stack<double> _st;
+		RPN();
 
 	public:
-		RPN();
 		RPN(std::string input);
 		RPN( RPN const & src );
 		~RPN();
@@ -32,6 +33,7 @@ class RPN
 
 };
 
-std::ostream &			operator<<( std::ostream & o, RPN const & i );
+double    to_double(std::string str);
+std::string ft_trim_white_space(std::string &str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:04:13 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/16 15:01:31 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/17 16:58:53 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include <sys/time.h>
+# include <iomanip>
 # include <vector>
 # include <deque>
 
@@ -25,6 +26,7 @@ class PmergeMe
 	private:
 		std::vector<int> _v;
 		std::deque<int> _d;
+		static int _group_size = 16;
 
 	public:
 		PmergeMe();
@@ -46,8 +48,9 @@ class PmergeMe
 		long double	get_time_in_ms(void);
 
 		void printVector(std::vector<int>& vec);
+		void printDeque(std::deque<int>& vec);
 };
 
-std::ostream &			operator<<( std::ostream & o, PmergeMe const & i );
+
 
 #endif

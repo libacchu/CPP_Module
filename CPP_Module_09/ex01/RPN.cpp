@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:01:18 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/15 16:34:12 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/17 17:51:37 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,63 +17,58 @@ RPN::RPN() {}
 RPN::RPN(std::string input)
 {
 	bool validSum = false;
-	unsigned int i;
-	int num1 = 0, num2 = 0, sum = 0;
-	for(i = 0; i < input.size(); i++)
+	double num1 = 0, num2 = 0, sum = 0;
+	if (input.find_first_not_of("0123456789+-*/ ") != std::string::npos)
 	{
-		if (isspace(input[i]) == true)
-			continue;
-		if (isdigit(input[i]) == true)
-		{
-			_st.push(input[i] - '0');
-		}
-		else if (input[i] == '+' || input[i] == '-' || input[i] == '/' || input[i] == '*')
+		std::cout << "Error: Invalid input" << std::endl;
+		return ;
+	}
+
+	std::istringstream ss(input);
+	std::string element;
+	while (getline(ss, element, ' ') || !ss.eof())
+	{
+		element = ft_trim_white_space(element);
+		
+		if (element == "+" || element == "-" || element == "/" || element == "*")
 		{
 			if (_st.size() < 2)
 			{
-				std::cerr << "Error: Invalid operations" << std::endl;
-				validSum = false;
-				break;
+				std::cout << "Error: Invalid operations" << std::endl;
+				return ;
 			}
 			validSum = true;
 			num2 = _st.top();
 			_st.pop();
 			num1 = _st.top();
 			_st.pop();
-			if (input[i] == '+')
-			{
+			if (element == "+")
 				sum = num1 + num2;
-				// std::cout  << num1 << " + " << num2 << std::endl;
-			}
-			if (input[i] == '-')
-			{
+			if (element == "-")
 				sum = num1 - num2;
-				// std::cout  << num1 << " - " << num2 << std::endl;
-			}
-			if (input[i] == '*')
-			{
+			if (element == "*")
 				sum = num1 * num2;
-				// std::cout  << num1 << " * " << num2 << std::endl;
-			}
-			if (input[i] == '/')
-			{
+			if (element == "/")
 				sum = num1 / num2;
-				// std::cout  << num1 << " / " << num2 << std::endl;
-			}
 			_st.push(sum);
 		}
 		else
 		{
-			std::cerr << "Error: Invalid operations" << std::endl;
-			validSum = false;
-			break;
+			double num = to_double(element);
+			if (num >= 10 || num <= -10)
+			{
+				std::cout << "Error: Invalid input" << std::endl;
+				return ;
+			}
+			_st.push(num);
 		}
-			
+		if (ss.eof())
+			break;
 	}
 	if (validSum == true && _st.size() == 1)
-		std::cout << sum << std::endl;
-	// else
-	// 	std::cerr << "Error: Invalid operations" << std::endl;
+		std::cout <<sum << std::endl;
+	else
+		std::cout << "Error" << std::endl;
 }
 
 RPN::RPN( const RPN & src )
@@ -81,24 +76,38 @@ RPN::RPN( const RPN & src )
 	(void) src;
 }
 
-RPN::~RPN()
-{
-}
+RPN::~RPN() {}
 
 RPN &				RPN::operator=( RPN const & rhs )
 {
 	(void) rhs;
-	//if ( this != &rhs )
-	//{
-		//this->_value = rhs.getValue();
-	//}
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, RPN const & i )
+double    to_double(std::string str)
 {
-	(void) o;
-	(void) i;
-	//o << "Value = " << i.getValue();
-	return o;
+    double    x;
+	int point = 0;
+	
+	if (str.find_first_not_of("0123456789-") != std::string::npos)
+		return (-11);
+	for (size_t i = 0; i < str.length(); i++)
+	{
+		if (str[i] == '-')
+			point++;
+	}
+	if (point > 1)
+		return (-11);
+    std::istringstream ss(str);
+    ss >> x;
+    return x;
+}
+
+std::string ft_trim_white_space(std::string &str)
+{
+	size_t first = str.find_first_not_of(" \t\n\v\f\r");
+	if (std::string::npos == first)
+		return str;
+	size_t last = str.find_last_not_of(" \t\n\v\f\r");
+	return str.substr(first, (last - first + 1));
 }

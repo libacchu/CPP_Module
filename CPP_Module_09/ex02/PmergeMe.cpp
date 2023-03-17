@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:01:18 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/16 15:06:24 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/17 17:56:54 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,20 @@ PmergeMe::PmergeMe(int ac, char** av)
 			}
 			j++;
 		}
+		
+		if (strlen(av[i]) > 10)
+		{
+			std::cout << "Error" << std::endl;
+			return;
+		}
+		long numL = atol(av[i]);
+		int numI = atoi(av[i]);
+		if (numL != (long)numI)
+		{
+			std::cout << "Error" << std::endl;
+			return;
+		}
+		
 		vec.push_back(atoi(av[i]));
 		i++;
 	}
@@ -53,22 +67,16 @@ PmergeMe::PmergeMe(int ac, char** av)
 	}
 	std::cout << std::endl;
 	
-	
 	long double start = get_time_in_ms();
 	sortVector(ac, av);
 	long double end = get_time_in_ms();
+	std::cout << "Time to process a range of " << _v.size() <<  " elements with std::vector : " << std::fixed << std::setprecision(0) << (end - start) << " us" <<std::endl;
 
-	std::cout << "start = " << start << std::endl;
-	std::cout << "end = " << end << std::endl;
-	std::cout << "Time to process a range of " << _v.size() <<  " elements with std::vector : " << std::fixed << (end - start) << " us" <<std::endl;
-	
 	start = get_time_in_ms();
 	sortDeque(ac, av);
 	end = get_time_in_ms();
-	
-	std::cout << "start = " << start << std::endl;
-	std::cout << "end = " << end << std::endl;
-	std::cout << "Time to process a range of " << _v.size() <<  " elements with std::deque : " << std::fixed << (end - start) << " us" <<std::endl;
+	std::cout << "Time to process a range of " << _v.size() <<  " elements with std::deque : " << std::fixed << std::setprecision(0) << (end - start) << " us" <<std::endl;
+
 }
 
 long double	PmergeMe::get_time_in_ms(void)
@@ -76,9 +84,8 @@ long double	PmergeMe::get_time_in_ms(void)
 	struct timeval	tv;
 
 	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * 1000000) + (tv.tv_usec));
+	return (1000000 * tv.tv_sec + tv.tv_usec);
 }
-
 
 void PmergeMe::sortVector(int ac, char** av)
 {
@@ -97,9 +104,10 @@ void PmergeMe::sortDeque(int ac, char** av)
 	{
 		_d.push_back(atoi(av[i++]));
 	}
+	dequeMergeInsertSort(_d, 0, _v.size()-1);
 }
 
-void dequeMergeSort(std::deque<int> &deq, int low, int mid, int high)
+void PmergeMe::dequeMergeSort(std::deque<int> &deq, int low, int mid, int high)
 {
 	std::deque<int> temp(high - low + 1);
     int i = low, j = mid + 1, k = 0;
@@ -121,7 +129,7 @@ void dequeMergeSort(std::deque<int> &deq, int low, int mid, int high)
     }
 }
 
-void dequeInsertSort(std::deque<int> &deq, int low, int high)
+void PmergeMe::dequeInsertSort(std::deque<int> &deq, int low, int high)
 {
 	for (int i = low + 1; i <= high; ++i)
 	{
@@ -135,9 +143,9 @@ void dequeInsertSort(std::deque<int> &deq, int low, int high)
 	}
 }
 
-void dequeMergeInsertSort(std::deque<int> &deq, int low, int high)
+void PmergeMe::dequeMergeInsertSort(std::deque<int> &deq, int low, int high)
 {
-	if (high - low + 1 < 16) {
+	if (high - low + 1 < 2) {
         dequeInsertSort(deq, low, high);
     } else {
         int mid = low + (high - low) / 2;
@@ -150,21 +158,21 @@ void dequeMergeInsertSort(std::deque<int> &deq, int low, int high)
 void PmergeMe::vecMergeSort(std::vector<int> &vec, int low, int mid, int high)
 {
 	std::vector<int> temp(high - low + 1);
-    int i = low, j = mid + 1, k = 0;
+    int i = low, j = mid + 1, a = 0;
     while (i <= mid && j <= high) {
         if (vec[i] <= vec[j]) {
-            temp[k++] = vec[i++];
+            temp[a++] = vec[i++];
         } else {
-            temp[k++] = vec[j++];
+            temp[a++] = vec[j++];
         }
     }
     while (i <= mid) {
-        temp[k++] = vec[i++];
+        temp[a++] = vec[i++];
     }
     while (j <= high) {
-        temp[k++] = vec[j++];
+        temp[a++] = vec[j++];
     }
-    for (int i = 0; i < k; ++i) {
+    for (int i = 0; i < a; ++i) {
         vec[low + i] = temp[i];
     }
 }
@@ -203,29 +211,25 @@ void PmergeMe::printVector(std::vector<int>& vec)
 	std::cout << std::endl;
 }
 
+void PmergeMe::printDeque(std::deque<int>& vec)
+{
+	for (size_t i = 0; i < vec.size(); i++)
+	{
+		std::cout << vec[i] << " ";
+	}
+	std::cout << std::endl;
+}
+
+
 PmergeMe::PmergeMe( const PmergeMe & src )
 {
 	(void) src;
 }
 
-PmergeMe::~PmergeMe()
-{
-}
+PmergeMe::~PmergeMe() {}
 
 PmergeMe &				PmergeMe::operator=( PmergeMe const & rhs )
 {
 	(void) rhs;
-	//if ( this != &rhs )
-	//{
-		//this->_value = rhs.getValue();
-	//}
 	return *this;
-}
-
-std::ostream &			operator<<( std::ostream & o, PmergeMe const & i )
-{
-	(void) o;
-	(void) i;
-	//o << "Value = " << i.getValue();
-	return o;
 }
