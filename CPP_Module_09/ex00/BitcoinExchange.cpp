@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iomanip>
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange() {}
 
-BitcoinExchange::BitcoinExchange(std::string input) : _input(input)
+BitcoinExchange::BitcoinExchange(const std::string& input) : _input(input)
 {
 	std::ifstream file_input;
 	std::string hello;
@@ -24,7 +25,7 @@ BitcoinExchange::BitcoinExchange(std::string input) : _input(input)
 		std::cerr <<  "Error: could not open file." << std::endl;
 		return ;
 	}
-	if (createDatabase("data.csv") == false)
+	if (!createDatabase("data.csv"))
 	{
 		file_input.close();
 		return ;
@@ -33,7 +34,7 @@ BitcoinExchange::BitcoinExchange(std::string input) : _input(input)
 	file_input.close();
 }
 
-bool BitcoinExchange::createDatabase(std::string path)
+bool BitcoinExchange::createDatabase(const std::string& path)
 {
 	std::ifstream file_database;
 	std::string buffer;
@@ -56,16 +57,15 @@ bool BitcoinExchange::createDatabase(std::string path)
 		std::string date, price;
 		std::istringstream ss(buffer);
 		
-		if (errorCheckLine(buffer) == false)
+		if (!errorCheckLine(buffer))
 		{
 			std::cerr << "Error:Invalid line in database: " << date << std::endl;
-			std::cerr << "Line: " << buffer << std::endl;
 			std::cerr << "Line: " << line_nbr << std::endl;
 			return (false);
 		}
 		getline(ss, date, ',');
 		date = ft_trim_white_space(date);
-		if (isDateValid(date) == false)
+		if (!isDateValid(date))
 		{
 			std::cerr << "Error:Invalid date in database: " << date << std::endl;
 			std::cerr << "Line: " << line_nbr << std::endl;
@@ -101,7 +101,7 @@ void BitcoinExchange::readInput(std::ifstream &file_input)
 		std::string date, value;
 		std::istringstream ss(buffer);
 		
-		if (errorCheckLine(buffer) == false)
+		if (!errorCheckLine(buffer))
 		{
 			std::cerr << "Error: bad input => " << buffer << std::endl;
 			buffer = "";
@@ -109,7 +109,7 @@ void BitcoinExchange::readInput(std::ifstream &file_input)
 		}
 		getline(ss, date, '|');
 		date = ft_trim_white_space(date);
-		if (isDateValid(date) == false)
+		if (!isDateValid(date))
 		{
 			std::cerr << "Error: bad input => " << date << std::endl;
 			date = "";
@@ -124,7 +124,7 @@ void BitcoinExchange::readInput(std::ifstream &file_input)
 			value = "";
 			continue;
 		}
-		if (isValueValid(bitcoin_value, value) == false)
+		if (!isValueValid(bitcoin_value, value))
 			continue;
 		std::map<std::string, double>::iterator it = _database.begin(); it++;
 		if (date < it->first)
@@ -153,9 +153,9 @@ std::string ft_trim_white_space(std::string &str)
 	return str.substr(first, (last - first + 1));
 }
 
-bool BitcoinExchange::isDateValid(std::string date)
+bool BitcoinExchange::isDateValid(const std::string& date)
 {
-	struct tm tm;
+	struct tm tm = {};
 	bool isLeap = false;
 	int year = 0, month = 0, day = 0;
 
@@ -176,11 +176,8 @@ bool BitcoinExchange::isDateValid(std::string date)
 			if (tmp.length() > 4 || tmp.length() < 4)
 				return (false);
 			year = digit;
-			if (year % 400 == 0)
-				isLeap = true;
-			else if (year % 4 == 0 && year % 100 != 0)
-				isLeap = true;
-		}
+            isLeap = isLeapYear(year);
+        }
 		if (i == 1)
 		{
 			if (tmp.length() > 2 || tmp.length() < 2)
@@ -196,23 +193,34 @@ bool BitcoinExchange::isDateValid(std::string date)
 			day = digit;
 			if (day < 0 || day > 31)
 				return (false);
-			if ((month == 02) && \
-					((isLeap == true && day > 29) || \
-					(isLeap == false && day > 28)))
-			{
-				return (false);
-			}
-			if ((month == 9 || month == 04 || month == 6 || month == 11) && 
-					day > 30)
-			{
-				return (false);
-			}
-		}
+            if (isLeap) {
+                if ((month == 02) && day > 29) {
+                    return (false);
+                }
+            } else {
+                if ((month == 02) && day > 28) {
+                    return (false);
+                }
+            }
+            if ((month == 9 || month == 4 || month == 6 || month == 11) &&
+                day > 30)
+            {
+                return (false);
+            }
+        }
 	}
 	return true;
 }
 
-bool BitcoinExchange::isValueValid(double value, std::string Ovalue)
+bool BitcoinExchange::isLeapYear(int year) {
+    if (year % 400 == 0) {
+        return (true);
+    } else if (year % 4 == 0 && year % 100 != 0)
+        return (true);
+    return false;
+}
+
+bool BitcoinExchange::isValueValid(double value, const std::string& Ovalue)
 {
 	if (Ovalue.find_first_not_of("0123456789.") != std::string::npos)
 		return (false);
@@ -274,14 +282,14 @@ std::string BitcoinExchange::to_string(double num)
 
 bool errorCheckLine(std::string &line)
 {
-	if (isMultiChar(line, '|') == false ||  isMultiChar(line, ',') == false)
+	if (!isMultiChar(line, '|') || !isMultiChar(line, ','))
 		return (false);
 	if (line.find_first_not_of("0123456789-,.| \n") != std::string::npos)
 		return (false);
 	return (true);
 }
 
-bool	isMultiChar(std::string &line, int c)
+bool	isMultiChar(std::string &line, char c)
 {
 	size_t pos = line.find(c);
 	

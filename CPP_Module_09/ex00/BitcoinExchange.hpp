@@ -27,26 +27,28 @@ class BitcoinExchange
 		std::string _database_start_date;
 		std::string _database_end_date;
 		std::map<std::string, double> _database; // Map container
-		
+
 		void print_database(int nbr_of_lines);
 
-	public:
-		BitcoinExchange();
-		BitcoinExchange(std::string _input);
+public:
+        BitcoinExchange();
+        BitcoinExchange(const std::string& _input);
 		BitcoinExchange( BitcoinExchange const & src );
 		~BitcoinExchange();
 
-		bool createDatabase(std::string path);
+		bool createDatabase(const std::string& path);
 		void readInput(std::ifstream &file_input);
-		bool isDateValid(std::string date);
-		bool isValueValid(double value, std::string Ovalue);
+		static bool isDateValid(const std::string& date);
+		static bool isValueValid(double value, const std::string& Ovalue);
 		
-		std::string to_string(double num);
+		static std::string to_string(double num);
 		
 		BitcoinExchange &		operator=( BitcoinExchange const & rhs );
+
+    static bool isLeapYear(int year);
 };
 
-bool		isMultiChar(std::string &line, int c);
+bool		isMultiChar(std::string &line, char c);
 bool		errorCheckLine(std::string &line);
 double    	to_double(std::string str);
 std::string ft_trim_white_space(std::string &str);
