@@ -15,6 +15,9 @@
 
 # include <iostream>
 # include <string>
+# include <cstring>
+# include <cstdlib>
+# include <algorithm>
 # include <sys/time.h>
 # include <iomanip>
 # include <vector>
@@ -26,7 +29,7 @@ class PmergeMe
 	private:
 		std::vector<int> _v;
 		std::deque<int> _d;
-		static int _group_size = 16;
+		const static int _group_size = 16;
 
 	public:
 		PmergeMe();
@@ -36,19 +39,21 @@ class PmergeMe
 		PmergeMe &		operator=( PmergeMe const & rhs );
 
 		void sortVector(int ac, char** av);
-		void vecMergeSort(std::vector<int> &vec, int low, int mid, int high);
-		void vecInsertSort(std::vector<int> &vec, int low, int high);
+		static void vecMergeSort(std::vector<int> &vec, int low, int mid, int high);
+		static void vecInsertSort(std::vector<int> &vec, int low, int high);
 		void vecMergeInsertSort(std::vector<int>& vec, int low, int high);
 
 		void sortDeque(int ac, char** av);
-		void dequeMergeSort(std::deque<int> &deq, int low, int mid, int high);
-		void dequeInsertSort(std::deque<int> &deq, int low, int high);
+		static void dequeMergeSort(std::deque<int> &deq, int low, int mid, int high);
+		static void dequeInsertSort(std::deque<int> &deq, int low, int high);
 		void dequeMergeInsertSort(std::deque<int> &deq, int low, int high);
 		
-		long double	get_time_in_ms(void);
+		static long double	get_time_in_ms();
 
-		void printVector(std::vector<int>& vec);
-		void printDeque(std::deque<int>& vec);
+		static void printVector(std::vector<int>& vec);
+		static void printDeque(std::deque<int>& vec);
+
+    bool isInt(char *string);
 };
 
 
