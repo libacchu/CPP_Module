@@ -14,7 +14,7 @@
 
 RPN::RPN() {}
 
-RPN::RPN(std::string input)
+RPN::RPN(const std::string& input)
 {
 	bool validSum = false;
 	double num1 = 0, num2 = 0, sum = 0;
@@ -42,15 +42,8 @@ RPN::RPN(std::string input)
 			_st.pop();
 			num1 = _st.top();
 			_st.pop();
-			if (element == "+")
-				sum = num1 + num2;
-			if (element == "-")
-				sum = num1 - num2;
-			if (element == "*")
-				sum = num1 * num2;
-			if (element == "/")
-				sum = num1 / num2;
-			_st.push(sum);
+            sum = getResult(num1, num2, element);
+            _st.push(sum);
 		}
 		else
 		{
@@ -65,10 +58,23 @@ RPN::RPN(std::string input)
 		if (ss.eof())
 			break;
 	}
-	if (validSum == true && _st.size() == 1)
+	if (validSum && _st.size() == 1)
 		std::cout <<sum << std::endl;
 	else
 		std::cout << "Error" << std::endl;
+}
+
+double RPN::getResult(double num1, double num2, const std::string &element) const {
+    double sum;
+    if (element == "+")
+        sum = num1 + num2;
+    if (element == "-")
+        sum = num1 - num2;
+    if (element == "*")
+        sum = num1 * num2;
+    if (element == "/")
+        sum = num1 / num2;
+    return sum;
 }
 
 RPN::RPN( const RPN & src )

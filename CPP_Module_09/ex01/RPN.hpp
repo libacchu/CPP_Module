@@ -26,11 +26,12 @@ class RPN
 		RPN();
 
 	public:
-		RPN(std::string input);
+		RPN(const std::string& input);
 		RPN( RPN const & src );
 		~RPN();
 		RPN &		operator=( RPN const & rhs );
 
+    double getResult(double num1, double num2, const std::string &element) const;
 };
 
 double    to_double(std::string str);
