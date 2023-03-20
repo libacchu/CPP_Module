@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:01:18 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/17 17:56:54 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/20 09:27:10 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ PmergeMe::PmergeMe(int ac, char** av)
 		int j = 0;
 		while(av[i][j])
 		{
-			if (isdigit(av[i][j]) == false)
+			if (!isdigit(av[i][j]))
 			{
 				std::cout << "Error" << std::endl;
 				return;
@@ -42,13 +42,11 @@ PmergeMe::PmergeMe(int ac, char** av)
 	/* Print before */
 	std::cout << "Before:";
     printVector(vec);
-	std::cout << std::endl;
 	std::sort(vec.begin(), vec.end());
 	
 	/* Print before */
 	std::cout << "After:";
     printVector(vec);
-	std::cout << std::endl;
 
     /* Sort and Time vector */
 	long double start = get_time_in_ms();
