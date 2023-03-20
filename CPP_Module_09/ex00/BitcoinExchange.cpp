@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:01:18 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/17 12:30:38 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/20 11:16:53 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,11 @@ void BitcoinExchange::readInput(std::ifstream &file_input)
 		std::cerr <<  "Error: Empty file" << std::endl;
 		return ;
 	}
+	if (buffer != "date | value")
+	{
+		std::cerr <<  "Error: Invalid header" << std::endl;
+		return ;
+	}
 	while(getline(file_input, buffer))
 	{
 		line_nbr++;
@@ -117,13 +122,14 @@ void BitcoinExchange::readInput(std::ifstream &file_input)
 		}
 		getline(ss, value, '|');
 		value = ft_trim_white_space(value);
-		double bitcoin_value = to_double(value);
-		if (bitcoin_value == -1)
+		size_t isDigitNumber = value.find_first_not_of("0123456789.-\n");
+		if (std::string::npos != isDigitNumber || !checkNumberofPoints(value))
 		{
 			std::cerr << "Error: bad input => " << value << std::endl;
 			value = "";
 			continue;
 		}
+		double bitcoin_value = to_double(value);
 		if (!isValueValid(bitcoin_value, value))
 			continue;
 		std::map<std::string, double>::iterator it = _database.begin(); it++;
@@ -159,6 +165,8 @@ bool BitcoinExchange::isDateValid(const std::string& date)
 	bool isLeap = false;
 	int year = 0, month = 0, day = 0;
 
+	if (date.length() > 10 || date.length() < 10)
+		return (false);
 	if (date.find_first_not_of("0123456789-") != std::string::npos)
 		return (false);
 	if (!strptime(date.c_str(), "%Y-%m-%d", &tm))
@@ -220,10 +228,13 @@ bool BitcoinExchange::isLeapYear(int year) {
     return false;
 }
 
-bool BitcoinExchange::isValueValid(double value, const std::string& Ovalue)
+bool BitcoinExchange::isValueValid(double value, std::string& Ovalue)
 {
-	if (Ovalue.find_first_not_of("0123456789.") != std::string::npos)
+	if (Ovalue.find_first_not_of("0123456789.-") != std::string::npos || !checkNumberofMinus(Ovalue))
+	{
+		std::cerr << "Error: bad input => " << Ovalue << std::endl;
 		return (false);
+	}
 	if (value < 0) {
 		std::cerr << "Error: not a positive number" << std::endl;
 		return (false);
@@ -254,22 +265,35 @@ void BitcoinExchange::print_database(int nbr_of_lines)
 double    to_double(std::string str)
 {
     double    x;
-	int point = 0;
 	
-	for (size_t i = 0; i < str.length(); i++)
-	{
-		if (isspace(str[i]) != 0)
-			continue;
-		if (str[i] == '.')
-			point++;
-		if (point > 1)
-			return (-1);
-		if (isdigit(str[i]) == 0 && str[i] != '.')
-			return (-1);
-	}
     std::istringstream ss(str);
     ss >> x;
     return x;
+}
+
+bool checkNumberofPoints(std::string &str)
+{
+	int point = 0;
+	for (size_t i = 0; i < str.length(); i++)
+	{
+		if (str[i] == '.')
+			point++;
+		if (point > 1)
+			return (false);
+	}
+	return (true);
+}
+
+bool checkNumberofMinus(std::string &str)
+{
+	for (size_t i = 0; i < str.length(); i++)
+	{
+		if (str[i] == '-' && i != 0)
+		{
+			return (false);
+		}
+	}
+	return (true);
 }
 
 std::string BitcoinExchange::to_string(double num)

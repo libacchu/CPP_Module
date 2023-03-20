@@ -31,6 +31,10 @@
 *.out
 *.app
 
+btc
+PmergeMe
+RPN
+
 # User
 phonebook
 .vscode

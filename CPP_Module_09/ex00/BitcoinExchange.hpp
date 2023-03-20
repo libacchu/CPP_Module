@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:04:13 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/17 12:22:03 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/20 11:08:14 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ public:
 		bool createDatabase(const std::string& path);
 		void readInput(std::ifstream &file_input);
 		static bool isDateValid(const std::string& date);
-		static bool isValueValid(double value, const std::string& Ovalue);
+		static bool isValueValid(double value, std::string& Ovalue);
 		
 		static std::string to_string(double num);
 		
@@ -52,5 +52,7 @@ bool		isMultiChar(std::string &line, char c);
 bool		errorCheckLine(std::string &line);
 double    	to_double(std::string str);
 std::string ft_trim_white_space(std::string &str);
+bool		checkNumberofPoints(std::string &str);
+bool 		checkNumberofMinus(std::string &str);
 
 #endif
