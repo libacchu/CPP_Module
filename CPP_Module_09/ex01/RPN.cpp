@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:01:18 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/17 17:51:37 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/20 11:36:29 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,12 @@ RPN::RPN(const std::string& input)
 			_st.pop();
 			num1 = _st.top();
 			_st.pop();
-            sum = getResult(num1, num2, element);
+            if (num2 == 0 && element == "/")
+			{
+				std::cout << "Error: Cannot divide by 0" << std::endl;
+				return ;
+			}
+			sum = getResult(num1, num2, element);
             _st.push(sum);
 		}
 		else
@@ -97,6 +102,8 @@ double    to_double(std::string str)
 	
 	if (str.find_first_not_of("0123456789-") != std::string::npos)
 		return (-11);
+	if (!checkNumberofMinus(str))
+		return (-11);
 	for (size_t i = 0; i < str.length(); i++)
 	{
 		if (str[i] == '-')
@@ -116,4 +123,16 @@ std::string ft_trim_white_space(std::string &str)
 		return str;
 	size_t last = str.find_last_not_of(" \t\n\v\f\r");
 	return str.substr(first, (last - first + 1));
+}
+
+bool checkNumberofMinus(std::string &str)
+{
+	for (size_t i = 0; i < str.length(); i++)
+	{
+		if (str[i] == '-' && i != 0)
+		{
+			return (false);
+		}
+	}
+	return (true);
 }

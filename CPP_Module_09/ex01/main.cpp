@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 11:55:02 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/15 12:30:27 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/20 09:10:24 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int ac, char** av)
 {
 	if (ac < 2)
 	{
-		std::cerr << "Error: Missing filename" << std::endl;
+		std::cerr << "Error: Missing argument" << std::endl;
 		return (1);
 	}
 	if (ac > 2)

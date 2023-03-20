@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:04:13 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/17 14:14:26 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/20 11:30:12 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class RPN
 };
 
 double    to_double(std::string str);
+bool 		checkNumberofMinus(std::string &str);
 std::string ft_trim_white_space(std::string &str);
 
 #endif
