@@ -6,7 +6,7 @@
 /*   By: libacchu <libacchu@students.42wolfsburg    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:01:18 by libacchu          #+#    #+#             */
-/*   Updated: 2023/03/20 09:27:10 by libacchu         ###   ########.fr       */
+/*   Updated: 2023/03/20 11:46:00 by libacchu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ PmergeMe::PmergeMe(int ac, char** av)
 	}
 
 	/* Print before */
-	std::cout << "Before:";
+	std::cout << "Before: ";
     printVector(vec);
 	std::sort(vec.begin(), vec.end());
 	
 	/* Print before */
-	std::cout << "After:";
+	std::cout << "After: ";
     printVector(vec);
 
     /* Sort and Time vector */
